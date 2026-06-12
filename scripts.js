@@ -26,31 +26,31 @@ const skills = {
 };
 
 function renderSkills(containerId, skillArr) {
-  const el = document.getElementById(containerId);
+	const el = document.getElementById(containerId);
 
-  // Ga naar de buitenste wrapper van deze container
-  const wrapper = el.closest('div[style*="margin: 4px"]') || el.parentElement;
+	// Ga naar de buitenste wrapper van deze container
+	const wrapper = el.closest('div[style*="margin: 4px"]') || el.parentElement;
 
-  let prevLine = null;
-  let current = wrapper.previousElementSibling;
+	let prevLine = null;
+	let current = wrapper.previousElementSibling;
 
-  while (current) {
-    if (current.classList && current.classList.contains('code-line')) {
-      const lnSpan = current.querySelector('.ln');
-      if (lnSpan) {
-        prevLine = current;
-        break;
-      }
-    }
-    current = current.previousElementSibling;
-  }
+	while (current) {
+		if (current.classList && current.classList.contains("code-line")) {
+			const lnSpan = current.querySelector(".ln");
+			if (lnSpan) {
+				prevLine = current;
+				break;
+			}
+		}
+		current = current.previousElementSibling;
+	}
 
-  const lastLn = prevLine ? prevLine.querySelector('.ln') : null;
-  const startNumber = lastLn ? parseInt(lastLn.textContent, 10) + 1 : 7;
+	const lastLn = prevLine ? prevLine.querySelector(".ln") : null;
+	const startNumber = lastLn ? parseInt(lastLn.textContent, 10) + 1 : 7;
 
-  el.innerHTML = skillArr
-    .map(
-      (s, i) => `
+	el.innerHTML = skillArr
+		.map(
+			(s, i) => `
     <div class="code-line" style="animation-delay:${i * 40}ms">
       <span class="ln">${startNumber + i}</span>
       <div class="gutter"></div>
@@ -66,14 +66,14 @@ function renderSkills(containerId, skillArr) {
       </span>
     </div>
   `,
-    )
-    .join("");
+		)
+		.join("");
 
-  setTimeout(() => {
-    el.querySelectorAll(".skill-bar-fill").forEach((bar) => {
-      bar.style.width = bar.dataset.target + "%";
-    });
-  }, 200);
+	setTimeout(() => {
+		el.querySelectorAll(".skill-bar-fill").forEach((bar) => {
+			bar.style.width = bar.dataset.target + "%";
+		});
+	}, 200);
 }
 
 renderSkills("skills-frontend", skills.frontend);
@@ -123,15 +123,15 @@ function showSection(name) {
 }
 
 const langMap = {
-	about: "TypeScript",
-	skills: "TypeScript",
+	about: "JavaScript",
+	skills: "JavaScript",
 	projects: "JSON",
 	contact: "Markdown",
 	experience: "JavaScript",
 };
 const fileMap = {
-	about: "about.ts",
-	skills: "skills.ts",
+	about: "about.js",
+	skills: "skills.js",
 	projects: "projects.json",
 	contact: "contact.md",
 	experience: "experience.js",
@@ -156,7 +156,7 @@ function togglePanel() {
 		panelOpen &&
 		document.getElementById("terminal-cmd").textContent === ""
 	) {
-		typeTerminalCmd("node about.ts");
+		typeTerminalCmd("node about.js");
 	}
 }
 
@@ -213,7 +213,7 @@ function showTerminalOutput() {
 
 // Run button
 const runMessages = [
-	"> node skills.ts\n✓ Build successful\n→ All 94 tests passed\n💚 0 vulnerabilities found",
+	"> node skills.js\n✓ Build successful\n→ All 94 tests passed\n💚 0 vulnerabilities found",
 	"> npm run deploy\n📦 Bundling...\n✓ Deployed to prod in 3.2s\n🚀 Live at portfolio.paradiddle97.dev",
 	"> git log --oneline -5\nabc123 fix: that bug I introduced yesterday\ndef456 feat: add dark mode (it's already dark)\nghi789 chore: update deps (yolo)\n...",
 	"> echo $AVAILABLE_FOR_HIRE\ntrue\n💡 Hint: contact.md has the details",
@@ -490,13 +490,13 @@ function switchPanelTab(el, name) {
 	const lines = document.getElementById("terminal-lines");
 	if (name === "problems") {
 		lines.innerHTML = `
-      <div class="t-out" style="color:var(--yellow)">⚠ skills.ts(43): Variable 'Bugs.ZERO' might be a lie  [ts-lint]</div>
-      <div class="t-out" style="color:var(--yellow)">⚠ about.ts(18): 'pretending to do yoga' is not a valid hobby type  [ts-lint]</div>
+      <div class="t-out" style="color:var(--yellow)">⚠ skills.js(43): Variable 'Bugs.ZERO' might be a lie  [eslint]</div>
+      <div class="t-out" style="color:var(--yellow)">⚠ about.js(18): 'pretending to do yoga' is not a valid hobby type  [eslint]</div>
       <div class="t-success">● No errors. You're doing great.</div>
     `;
 	} else if (name === "output") {
 		lines.innerHTML = `
-      <div class="t-out">[12:00:01] Starting portfolio.ts...</div>
+      <div class="t-out">[12:00:01] Starting portfolio.js...</div>
       <div class="t-out">[12:00:02] Loaded 4 sections, 0 bugs (see warnings)</div>
       <div class="t-success">[12:00:02] Portfolio ready. Awaiting recruiters...</div>
     `;
