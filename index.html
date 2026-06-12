@@ -1,0 +1,1874 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>dev.portfolio — VS Dev</title>
+		<link rel="stylesheet" href="./styles.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
+			rel="stylesheet" />
+	</head>
+	<body>
+		<!-- TITLE BAR -->
+		<div class="titlebar">
+			<div class="titlebar-dots">
+				<div
+					class="dot dot-red"
+					onclick="
+						showNotification(
+							'🛑 Close? Use Cmd+Q... just kidding, you can\'t quit me that easily.',
+							'info',
+						)
+					"></div>
+				<div
+					class="dot dot-yellow"
+					onclick="
+						showNotification(
+							'💛 Minimize? My portfolio deserves your full attention.',
+							'warn',
+						)
+					"></div>
+				<div class="dot dot-green" onclick="toggleFullscreen()"></div>
+			</div>
+			<div class="titlebar-menu">
+				<span class="menu-item" onclick="openCmdPalette()">File</span>
+				<span class="menu-item" onclick="openCmdPalette()">Edit</span>
+				<span class="menu-item" onclick="openCmdPalette()">View</span>
+				<span class="menu-item" onclick="openCmdPalette()">Go</span>
+				<span class="menu-item" onclick="openCmdPalette()">Run</span>
+				<span class="menu-item" onclick="openCmdPalette()"
+					>Terminal</span
+				>
+			</div>
+			<div class="titlebar-center">dev.portfolio — Niels Aling</div>
+		</div>
+
+		<!-- TAB BAR -->
+		<div class="tabbar" id="tabbar">
+			<div
+				class="tab active"
+				data-section="about"
+				onclick="switchTab(this, 'about')">
+				<span style="color: #4ec9b0; font-size: 10px">TS</span>
+				<span>about.ts</span>
+				<span class="tab-close">×</span>
+			</div>
+			<div
+				class="tab"
+				data-section="skills"
+				onclick="switchTab(this, 'skills')">
+				<span style="color: #3178c6; font-size: 10px">TS</span>
+				<span>skills.ts</span>
+				<span class="tab-close">×</span>
+			</div>
+			<div
+				class="tab"
+				data-section="projects"
+				onclick="switchTab(this, 'projects')">
+				<span style="color: #d4a827; font-size: 10px">{}</span>
+				<span>projects.json</span>
+				<span class="tab-modified"></span>
+				<span class="tab-close">×</span>
+			</div>
+			<div
+				class="tab"
+				data-section="contact"
+				onclick="switchTab(this, 'contact')">
+				<span style="color: #6a9955; font-size: 10px">#</span>
+				<span>contact.md</span>
+				<span class="tab-close">×</span>
+			</div>
+			<div
+				class="tab"
+				data-section="experience"
+				onclick="switchTab(this, 'experience')">
+				<span style="color: #ce9178; font-size: 10px">JS</span>
+				<span>experience.js</span>
+				<span class="tab-close">×</span>
+			</div>
+		</div>
+
+		<!-- TOOLBAR -->
+		<div class="toolbar">
+			<button class="tool-btn run" onclick="runCode()">
+				<svg viewBox="0 0 16 16" fill="currentColor">
+					<path d="M3 2l10 6-10 6V2z" />
+				</svg>
+				Run
+			</button>
+			<button class="tool-btn" onclick="formatDocument()">
+				<svg
+					viewBox="0 0 16 16"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5">
+					<path d="M2 4h12M2 8h8M2 12h10" />
+				</svg>
+				Format
+			</button>
+			<button class="tool-btn" onclick="openCmdPalette()">
+				<svg
+					viewBox="0 0 16 16"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5">
+					<circle cx="7" cy="7" r="4" />
+					<path d="M11 11l3 3" />
+				</svg>
+				Find
+			</button>
+			<div class="toolbar-sep"></div>
+			<button class="tool-btn" onclick="togglePanel()">
+				<svg
+					viewBox="0 0 16 16"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5">
+					<rect x="2" y="9" width="12" height="5" rx="1" />
+					<path d="M2 3h12M2 6h8" />
+				</svg>
+				Terminal
+			</button>
+			<button
+				class="tool-btn"
+				onclick="openCmdPalette()"
+				style="margin-left: auto">
+				<svg
+					viewBox="0 0 16 16"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5">
+					<path d="M5 3l4 4-4 4" />
+				</svg>
+				⌘ P
+			</button>
+		</div>
+
+		<!-- MAIN AREA -->
+		<div class="main">
+			<!-- ACTIVITY BAR -->
+			<div class="activity-bar">
+				<div
+					class="activity-icon active"
+					title="Explorer"
+					onclick="toggleSidebar()">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5">
+						<path
+							d="M3 4a1 1 0 011-1h7.586a1 1 0 01.707.293l5.414 5.414A1 1 0 0118 9.414V20a1 1 0 01-1 1H4a1 1 0 01-1-1V4z" />
+					</svg>
+				</div>
+				<div
+					class="activity-icon"
+					title="Search"
+					onclick="openCmdPalette()">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5">
+						<circle cx="11" cy="11" r="7" />
+						<path d="M21 21l-4.35-4.35" />
+					</svg>
+				</div>
+				<div
+					class="activity-icon"
+					title="Git"
+					onclick="
+						showNotification(
+							'🌿 1 branch ahead of main: feature/hire-me',
+							'git',
+						)
+					">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5">
+						<circle cx="6" cy="6" r="2" />
+						<circle cx="18" cy="6" r="2" />
+						<circle cx="6" cy="18" r="2" />
+						<path d="M6 8v8M8 6h4a4 4 0 014 4v0" />
+					</svg>
+				</div>
+				<div
+					class="activity-icon"
+					title="Extensions"
+					onclick="
+						showNotification(
+							'📦 31 extensions installed. No, I don\'t have Prettier. Yes, I use tabs.',
+							'ext',
+						)
+					">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5">
+						<rect x="3" y="3" width="8" height="8" rx="1" />
+						<rect x="13" y="3" width="8" height="8" rx="1" />
+						<rect x="3" y="13" width="8" height="8" rx="1" />
+						<rect x="13" y="13" width="8" height="8" rx="1" />
+					</svg>
+				</div>
+				<div
+					class="activity-icon activity-bottom"
+					title="Settings"
+					onclick="openCmdPalette()">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5">
+						<circle cx="12" cy="12" r="3" />
+						<path
+							d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+					</svg>
+				</div>
+			</div>
+
+			<!-- SIDEBAR -->
+			<div class="sidebar" id="sidebar">
+				<div class="sidebar-title">Explorer</div>
+				<div
+					class="sidebar-title"
+					style="
+						color: var(--gray2);
+						font-size: 9px;
+						margin-top: -4px;
+					">
+					PORTFOLIO — NIELS ALING
+				</div>
+				<div class="file-tree">
+					<div class="tree-folder open" onclick="toggleFolder(this)">
+						<span class="folder-arrow">▶</span>
+						<span style="color: #d4a827; font-size: 13px">📁</span>
+						src
+					</div>
+					<div class="folder-children">
+						<div
+							class="tree-item active"
+							onclick="switchTabByName('about')">
+							<div class="file-dot fd-ts"></div>
+							about.ts
+						</div>
+						<div
+							class="tree-item"
+							onclick="switchTabByName('skills')">
+							<div class="file-dot fd-ts"></div>
+							skills.ts
+						</div>
+						<div
+							class="tree-item"
+							onclick="switchTabByName('projects')">
+							<div class="file-dot fd-json"></div>
+							projects.json
+						</div>
+						<div
+							class="tree-item"
+							onclick="switchTabByName('contact')">
+							<div class="file-dot fd-md"></div>
+							contact.md
+						</div>
+						<div
+							class="tree-item"
+							onclick="switchTabByName('experience')">
+							<div class="file-dot fd-ts"></div>
+							experience.js
+						</div>
+					</div>
+					<!-- <div
+						class="tree-folder open"
+						onclick="toggleFolder(this)"
+						style="margin-top: 4px">
+						<span
+							class="folder-arrow"
+							style="transform: rotate(90deg)"
+							>▶</span
+						>
+						<span style="color: #d4a827; font-size: 13px">📁</span>
+						config
+					</div>
+					<div class="folder-children">
+						<div class="tree-item" style="padding-left: 44px">
+							<div
+								class="file-dot"
+								style="background: var(--gray1)"></div>
+							README.md
+						</div>
+						<div class="tree-item" style="padding-left: 44px">
+							<div class="file-dot fd-json"></div>
+							package.json
+						</div>
+					</div> -->
+				</div>
+			</div>
+
+			<!-- EDITOR -->
+			<div class="editor" id="editor">
+				<div class="editor-content" id="editor-content">
+					<!-- BREADCRUMB inside editor -->
+					<div class="breadcrumb" id="breadcrumb">
+						<span class="bc-item">portfolio</span>
+						<span class="bc-sep">›</span>
+						<span class="bc-item">src</span>
+						<span class="bc-sep">›</span>
+						<span class="bc-item active" id="bc-current"
+							>about.ts</span
+						>
+					</div>
+
+					<!-- ===== ABOUT SECTION ===== -->
+					<div id="section-about" class="visible-section">
+						<div class="code-line">
+							<span class="ln">1</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>//============================================================</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">2</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt">// about.ts </span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">3</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>// Last modified: today</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">4</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>//============================================================</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">5</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">6</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">import</span>
+								<span class="punc">{ </span
+								><span class="cls">Developer</span
+								><span class="punc"> }</span>
+								<span class="kw">from</span>
+								<span class="import-path">'@types/human'</span
+								><span class="punc">;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">7</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">import</span>
+								<span class="punc">{ </span
+								><span class="cls">Nerd</span
+								><span class="punc">, </span
+								><span class="cls"> Problem Solver </span
+								><span class="punc">, </span
+								><span class="cls"> </span
+								><span class="punc"> }</span>
+								<span class="kw">from</span>
+								<span class="import-path"
+									>'@charachteristics/niels'</span
+								><span class="punc">;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">8</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">9</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">const</span>
+								<span class="prop">profile</span
+								><span class="punc">: </span
+								><span class="cls">Developer</span>
+								<span class="op">=</span>
+								<span class="punc">{</span></span
+							>
+						</div>
+
+						<!-- Profile card -->
+						<div style="margin: 8px 0 12px">
+							<div class="profile-block">
+								<div class="avatar">NA</div>
+								<div class="profile-info">
+									<div class="profile-name">Niels Aling</div>
+									<div class="profile-role">
+										// Digital Developer
+									</div>
+									<div class="profile-bio">
+										With great power comes great
+										responsibility ~ Uncle Ben
+									</div>
+									<div class="profile-badges">
+										<span class="badge badge-green"
+											>Open to work</span
+										>
+										<span class="badge badge-gray"
+											>Utrecht, NL</span
+										>
+										<span class="badge badge-gray"
+											>UTC+1</span
+										>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">10</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">name</span
+								><span class="punc">: </span
+								><span class="str">"Niels Aling"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">11</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">age</span
+								><span class="punc">: </span
+								><span class="num">28</span
+								><span class="punc">,</span>
+								<span class="cmt"
+									>// might be outdated depending on when you
+									read this</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">12</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">location</span
+								><span class="punc">: </span
+								><span class="str">"Utrecht, NL"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">14</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">availableForWork</span
+								><span class="punc">: </span
+								><span class="kw">true</span
+								><span class="punc">,</span>
+							</span>
+						</div>
+						<div class="code-line">
+							<span class="ln">16</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">superpowers</span
+								><span class="punc">: [</span
+								><span class="str">"adaptive"</span
+								><span class="punc">, </span
+								><span class="str">"creative"</span
+								><span class="punc">, </span
+								><span class="str">"open-minded"</span
+								><span class="punc">],</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">16</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">hobbies</span
+								><span class="punc">: [</span
+								><span class="str">"gaming"</span
+								><span class="punc">, </span
+								><span class="str">"music"</span
+								><span class="punc">, </span
+								><span class="str">"fixing shit"</span
+								><span class="punc">],</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">17</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">};</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">18</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">19</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">export default</span>
+								<span class="prop">profile</span
+								><span class="punc">;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">20</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">21</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+					</div>
+
+					<!-- ===== SKILLS SECTION ===== -->
+					<div id="section-skills" class="hidden-section">
+						<div class="code-line">
+							<span class="ln">1</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>//============================================================</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">2</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt">// skills.ts</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">2</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>// Warning: these numbers are
+									self-reported. Your opinion may be
+									different.</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">3</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>//============================================================</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">4</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">5</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">interface</span>
+								<span class="cls">Skill</span>
+								<span class="punc">{ name: </span
+								><span class="type">string</span
+								><span class="punc">; level: </span
+								><span class="type">number</span
+								><span class="punc">; }</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">6</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">7</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">const</span>
+								<span class="prop">frontend</span
+								><span class="punc">: </span
+								><span class="cls">Skill</span
+								><span class="punc">[] =</span>
+								<span class="punc">[</span></span
+							>
+						</div>
+
+						<!-- Skill bars -->
+						<div style="margin: 4px 0 12px">
+							<div style="padding: 4px 66px 0">
+								<div
+									style="
+										color: var(--gray2);
+										font-size: 11px;
+										margin-bottom: 6px;
+										font-family: var(--sans);
+									">
+									— Frontend
+								</div>
+							</div>
+							<div id="skills-frontend">
+								<!-- filled by JS -->
+							</div>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">12</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">];</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">13</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">14</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">const</span>
+								<span class="prop">backend</span
+								><span class="punc">: </span
+								><span class="cls">Skill</span
+								><span class="punc">[] =</span>
+								<span class="punc">[</span></span
+							>
+						</div>
+
+						<div style="margin: 4px 0 12px">
+							<div style="padding: 4px 66px 0">
+								<div
+									style="
+										color: var(--gray2);
+										font-size: 11px;
+										margin-bottom: 6px;
+										font-family: var(--sans);
+									">
+									— Backend &amp; DB
+								</div>
+							</div>
+							<div id="skills-backend"></div>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">19</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">];</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">20</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">21</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">const</span>
+								<span class="prop">tools</span
+								><span class="punc">: </span
+								><span class="cls">Skill</span
+								><span class="punc">[] =</span>
+								<span class="punc">[</span></span
+							>
+						</div>
+
+						<div style="margin: 4px 0 12px">
+							<div style="padding: 4px 66px 0">
+								<div
+									style="
+										color: var(--gray2);
+										font-size: 11px;
+										margin-bottom: 6px;
+										font-family: var(--sans);
+									">
+									— Tools
+								</div>
+							</div>
+							<div id="skills-tools"></div>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">26</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">];</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">27</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">28</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">const</span>
+								<span class="prop">languages</span
+								><span class="punc">: </span
+								><span class="cls">Skill</span
+								><span class="punc">[] =</span>
+								<span class="punc">[</span></span
+							>
+						</div>
+
+						<div style="margin: 4px 0 12px">
+							<div style="padding: 4px 66px 0">
+								<div
+									style="
+										color: var(--gray2);
+										font-size: 11px;
+										margin-bottom: 6px;
+										font-family: var(--sans);
+									">
+									— Languages
+								</div>
+							</div>
+							<div id="skills-languages"></div>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">33</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">];</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">34</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">35</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>// Also like to expetiment with apps like
+									p5.js, Sonic Pi and TouchDesigner
+								</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">36</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">37</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">export</span>
+								<span class="punc">{ </span
+								><span class="prop">frontend</span
+								><span class="punc">, </span
+								><span class="prop">backend</span
+								><span class="punc">, </span
+								><span class="prop">tools</span
+								><span class="punc">, </span
+								><span class="prop">languages</span
+								><span class="punc"> };</span></span
+							>
+						</div>
+					</div>
+
+					<!-- ===== PROJECTS SECTION ===== -->
+					<div id="section-projects" class="hidden-section">
+						<div class="code-line">
+							<span class="ln">1</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>//============================================================</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">2</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt">// projects.json</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">3</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>// TODO: add more projects. There are more.
+									I promise.</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">4</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>//============================================================</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">5</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">6</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">{</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">7</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">"projects"</span
+								><span class="punc">: [</span></span
+							>
+						</div>
+
+						<!-- Project cards -->
+						<a
+							href="https://www.holdfastandstipe.com"
+							target="_blank"
+							class="project-card"
+							onclick="
+								showNotification('Redirecting to Website...')
+							">
+							<div class="project-header">
+								<span class="project-name">
+									> Holdfast and Stipe</span
+								>
+								<span class="project-lang">Webflow</span>
+							</div>
+							<div class="project-desc">
+								A Webflow website for a seaweed refinary.
+							</div>
+							<div class="project-tags">
+								<span class="tag-pill">Webflow</span>
+								<span class="tag-pill">Hubspot</span>
+								<span class="tag-pill">Zapier/Make</span>
+							</div>
+						</a>
+
+						<a
+							href="https://paradiddle97.github.io/Devs.exe/"
+							target="_blank"
+							class="project-card"
+							onclick="
+								showNotification('Redirecting to Website...')
+							">
+							<div class="project-header">
+								<span class="project-name"> > Devs.exe</span>
+								<span class="project-lang">School</span>
+							</div>
+							<div class="project-desc">
+								School project about data fetching techniques.
+								In an old school jacket ;)
+							</div>
+							<div class="project-tags">
+								<span class="tag-pill">HTML</span>
+								<span class="tag-pill">CSS</span>
+								<span class="tag-pill">JavaScript</span>
+							</div>
+						</a>
+
+						<a
+							href="https://paradiddle97.github.io/weekly-nerd-blog/"
+							target="_blank"
+							class="project-card"
+							onclick="
+								showNotification('Redirecting to Website...')
+							">
+							<div class="project-header">
+								<span class="project-name">
+									> Weekly Nerd Blog</span
+								>
+								<span class="project-lang">School</span>
+							</div>
+							<div class="project-desc">
+								Blog about all the speakers during Minor Web
+								@HvA
+							</div>
+							<div class="project-tags">
+								<span class="tag-pill">HTML</span>
+								<span class="tag-pill">CSS</span>
+								<span class="tag-pill">JavaScript</span>
+							</div>
+						</a>
+
+						<a
+							href="https://paradiddle97.github.io/CSS-Dayta/"
+							target="_blank"
+							class="project-card"
+							onclick="
+								showNotification('Redirecting to Website...')
+							">
+							<div class="project-header">
+								<span class="project-name"> > CSS DAYTA</span>
+								<span class="project-lang">Hackaton</span>
+							</div>
+							<div class="project-desc">
+								Award winning hackaton project for CSS Day.
+							</div>
+							<div class="project-tags">
+								<span class="tag-pill">HTML</span>
+								<span class="tag-pill">CSS</span>
+								<span class="tag-pill">JavaScript</span>
+							</div>
+						</a>
+
+						<div class="code-line" style="margin-top: 12px">
+							<span class="ln">8</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="punc">]</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">9</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">}</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">10</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+					</div>
+
+					<!-- ===== CONTACT SECTION ===== -->
+					<div id="section-contact" class="hidden-section">
+						<div class="code-line">
+							<span class="ln">1</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"># contact.md</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">2</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">3</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<div class="contact-row">
+									<span class="contact-label">email</span>
+									<span
+										class="contact-val"
+										onclick="
+											copyToClipboard(
+												'niels.aling@hotmail.com',
+												'Email copied!',
+											)
+										"
+										>niels.aling@hotmail.com</span
+									>
+								</div>
+							</span>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">4</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<div class="contact-row">
+									<span class="contact-label">github</span>
+									<span
+										class="contact-val"
+										onclick="
+											showNotification(
+												'🐙 Opening github.com/paradiddle97',
+												'link',
+											)
+										"
+										>github.com/paradiddle97</span
+									>
+								</div>
+							</span>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">5</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<div class="contact-row">
+									<span class="contact-label">linkedin</span>
+									<span
+										class="contact-val"
+										onclick="
+											showNotification(
+												'💼 Opening LinkedIn...',
+												'link',
+											)
+										"
+										>linkedin.com/in/nielsaling</span
+									>
+								</div>
+							</span>
+						</div>
+
+						<div style="margin: 12px 66px">
+							<button
+								class="tool-btn"
+								style="
+									font-size: 12px;
+									margin-left: 16px;
+									padding: 8px 20px;
+									border-color: var(--green-bright);
+									color: var(--green-neon);
+								"
+								onclick="
+									copyToClipboard(
+										'niels.aling@hotmail.com',
+										'📋 Email copied to clipboard!',
+									)
+								">
+								Copy Email Address
+							</button>
+						</div>
+					</div>
+
+					<!-- ===== EXPERIENCE SECTION ===== -->
+					<div id="section-experience" class="hidden-section">
+						<div class="code-line">
+							<span class="ln">1</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>//============================================================</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">2</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>// experience.js — Work and education
+									history</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">3</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="cmt"
+									>//============================================================</span
+								></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">4</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">5</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">const</span>
+								<span class="prop">jobs</span>
+								<span class="op">=</span>
+								<span class="punc">[</span></span
+							>
+						</div>
+						<div style="margin: 4px 66px 8px">
+							<div
+								style="
+									border-left: 2px solid var(--green-neon);
+									padding-left: 14px;
+									margin-bottom: 4px;
+								">
+								<div
+									style="
+										display: flex;
+										align-items: center;
+										gap: 10px;
+										margin-bottom: 4px;
+									">
+									<span
+										style="
+											color: var(--white);
+											font-size: 13px;
+											font-family: var(--sans);
+										"
+										>Holdfast and Stipe</span
+									>
+									<span
+										style="
+											color: var(--gray2);
+											font-size: 11px;
+										"
+										>·</span
+									>
+									<span
+										style="
+											color: var(--green-neon);
+											font-size: 11px;
+										"
+										>Digital Developer</span
+									>
+									<span
+										style="
+											margin-left: auto;
+											color: var(--gray2);
+											font-size: 11px;
+										"
+										>2025 - Now
+									</span>
+								</div>
+								<div
+									style="
+										color: var(--gray3);
+										font-size: 12px;
+										font-family: var(--sans);
+										line-height: 1.7;
+									">
+									Building and maintaining main website,
+									internal tools, automizations and
+									structures. Also helping the marketing team.
+								</div>
+							</div>
+						</div>
+						<div class="code-line">
+							<span class="ln">6</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="punc">{</span></span
+							>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">7</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">company</span
+								><span class="punc">: </span
+								><span class="str">"Holdfast and Stipe"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">8</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">role</span
+								><span class="punc">: </span
+								><span class="str">"Digital Developer"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">9</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">period</span
+								><span class="punc">: </span
+								><span class="str">"2025 → 2026"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">10</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">stack</span
+								><span class="punc">: [</span
+								><span class="str">"Webflow"</span
+								><span class="punc">, </span
+								><span class="str">"Zapier"</span
+								><span class="punc">, </span
+								><span class="str">"Javascript"</span
+								><span class="punc">, </span
+								><span class="str">"CSS"</span
+								><span class="punc">],</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">11</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="punc">},</span></span
+							>
+						</div>
+
+						<div style="margin: 4px 66px 8px">
+							<div
+								style="
+									border-left: 2px solid var(--yellow);
+									padding-left: 14px;
+									margin-bottom: 4px;
+								">
+								<div
+									style="
+										display: flex;
+										align-items: center;
+										gap: 10px;
+										margin-bottom: 4px;
+									">
+									<span
+										style="
+											color: var(--white);
+											font-size: 13px;
+											font-family: var(--sans);
+										"
+										>Clarity</span
+									>
+									<span
+										style="
+											color: var(--gray2);
+											font-size: 11px;
+										"
+										>·</span
+									>
+									<span
+										style="
+											color: var(--yellow);
+											font-size: 11px;
+										"
+										>Frondend Developer</span
+									>
+									<span
+										style="
+											margin-left: auto;
+											color: var(--gray2);
+											font-size: 11px;
+										"
+										>2020 – 2022</span
+									>
+								</div>
+								<div
+									style="
+										color: var(--gray3);
+										font-size: 12px;
+										font-family: var(--sans);
+										line-height: 1.7;
+									">
+									Intern - Building new features and blocks
+									and making projects more accessible.
+								</div>
+							</div>
+						</div>
+						<div class="code-line">
+							<span class="ln">12</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="punc">{</span></span
+							>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">13</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">company</span
+								><span class="punc">: </span
+								><span class="str">"Clarity"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">14</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">role</span
+								><span class="punc">: </span
+								><span class="str">"Frontend Developer"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">15</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">period</span
+								><span class="punc">: </span
+								><span class="str">"2024 → 2025"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">16</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">stack</span
+								><span class="punc">: [</span
+								><span class="str">"Next.js"</span
+								><span class="punc">, </span
+								><span class="str">"Vue.js"</span
+								><span class="punc">, </span
+								><span class="str">"React"</span
+								><span class="punc">],</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">17</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="punc">},</span></span
+							>
+						</div>
+						<div style="margin: 4px 66px 8px">
+							<div
+								style="
+									border-left: 2px solid var(--blue);
+									padding-left: 14px;
+									margin-bottom: 4px;
+								">
+								<div
+									style="
+										display: flex;
+										align-items: center;
+										gap: 10px;
+										margin-bottom: 4px;
+									">
+									<span
+										style="
+											color: var(--white);
+											font-size: 13px;
+											font-family: var(--sans);
+										"
+										>aardig amsterdam</span
+									>
+									<span
+										style="
+											color: var(--gray2);
+											font-size: 11px;
+										"
+										>·</span
+									>
+									<span
+										style="
+											color: var(--blue);
+											font-size: 11px;
+										"
+										>Low-code Developer</span
+									>
+									<span
+										style="
+											margin-left: auto;
+											color: var(--gray2);
+											font-size: 11px;
+										"
+										>2020 – 2022</span
+									>
+								</div>
+								<div
+									style="
+										color: var(--gray3);
+										font-size: 12px;
+										font-family: var(--sans);
+										line-height: 1.7;
+									">
+									Intern - Building automations and blocks.
+								</div>
+							</div>
+						</div>
+						<div class="code-line">
+							<span class="ln">18</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="punc">{</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">19</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">company</span
+								><span class="punc">: </span
+								><span class="str">"aardig amsterdam"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">20</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">role</span
+								><span class="punc">: </span
+								><span class="str">"Low-code Developer"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">21</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">period</span
+								><span class="punc">: </span
+								><span class="str">"2023 → 2024"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">22</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">stack</span
+								><span class="punc">: [</span
+								><span class="str">"Webflow"</span
+								><span class="punc">, </span
+								><span class="str">"Zapier"</span
+								><span class="punc">, </span
+								><span class="str">"HubSpot"</span
+								><span class="punc">],</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">23</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="punc">}</span></span
+							>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">24</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">];</span></span
+							>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">25</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">26</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">const</span>
+								<span class="prop">education</span>
+								<span class="op">=</span>
+								<span class="punc">[</span></span
+							>
+						</div>
+						<div style="margin: 4px 66px 8px">
+							<div
+								style="
+									border-left: 2px solid var(--green-neon);
+									padding-left: 14px;
+									margin-bottom: 4px;
+								">
+								<div
+									style="
+										display: flex;
+										align-items: center;
+										gap: 10px;
+										margin-bottom: 4px;
+									">
+									<span
+										style="
+											color: var(--white);
+											font-size: 13px;
+											font-family: var(--sans);
+										"
+										>University of Amsterdam</span
+									>
+									<span
+										style="
+											margin-left: auto;
+											color: var(--gray2);
+											font-size: 11px;
+										"
+										>2021 - 2025
+									</span>
+								</div>
+								<div
+									style="
+										color: var(--gray3);
+										font-size: 12px;
+										font-family: var(--sans);
+										line-height: 1.7;
+									">
+									Communication Multimedia Design
+								</div>
+							</div>
+						</div>
+						<div class="code-line">
+							<span class="ln">27</span>
+							<div class="gutter"></div>
+							<span class="code-content">{</span>
+						</div>
+						<div class="code-line">
+							<span class="ln">28</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">degree</span
+								><span class="punc">: </span
+								><span class="str">"Bachelor's degree"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">29</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">location</span
+								><span class="punc">: </span
+								><span class="str">"Amsterdam"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">30</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">},</span></span
+							>
+						</div>
+						<div style="margin: 4px 66px 8px">
+							<div
+								style="
+									border-left: 2px solid var(--green-neon);
+									padding-left: 14px;
+									margin-bottom: 4px;
+								">
+								<div
+									style="
+										display: flex;
+										align-items: center;
+										gap: 10px;
+										margin-bottom: 4px;
+									">
+									<span
+										style="
+											color: var(--white);
+											font-size: 13px;
+											font-family: var(--sans);
+										"
+										>University of Arts Utrecht</span
+									>
+									<span
+										style="
+											margin-left: auto;
+											color: var(--gray2);
+											font-size: 11px;
+										"
+										>2018 - 2019
+									</span>
+								</div>
+								<div
+									style="
+										color: var(--gray3);
+										font-size: 12px;
+										font-family: var(--sans);
+										line-height: 1.7;
+									">
+									Design Digital Media
+								</div>
+							</div>
+						</div>
+						<div class="code-line">
+							<span class="ln">31</span>
+							<div class="gutter"></div>
+							<span class="code-content">{</span>
+						</div>
+						<div class="code-line">
+							<span class="ln">32</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">degree</span
+								><span class="punc">: </span
+								><span class="str">"Associate's Degree"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">33</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">location</span
+								><span class="punc">: </span
+								><span class="str">"Utrecht"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">34</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">},</span></span
+							>
+						</div>
+						<div style="margin: 4px 66px 8px">
+							<div
+								style="
+									border-left: 2px solid var(--green-neon);
+									padding-left: 14px;
+									margin-bottom: 4px;
+								">
+								<div
+									style="
+										display: flex;
+										align-items: center;
+										gap: 10px;
+										margin-bottom: 4px;
+									">
+									<span
+										style="
+											color: var(--white);
+											font-size: 13px;
+											font-family: var(--sans);
+										"
+										>Grafisch Lyceum Utrecht</span
+									>
+									<span
+										style="
+											margin-left: auto;
+											color: var(--gray2);
+											font-size: 11px;
+										"
+										>2014 - 2018
+									</span>
+								</div>
+								<div
+									style="
+										color: var(--gray3);
+										font-size: 12px;
+										font-family: var(--sans);
+										line-height: 1.7;
+									">
+									Animation Audio/Visual Design
+								</div>
+							</div>
+						</div>
+						<div class="code-line">
+							<span class="ln">31</span>
+							<div class="gutter"></div>
+							<span class="code-content">{</span>
+						</div>
+						<div class="code-line">
+							<span class="ln">32</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">degree</span
+								><span class="punc">: </span
+								><span class="str">"MBO 4"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">33</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<span class="prop">location</span
+								><span class="punc">: </span
+								><span class="str">"Utrecht"</span
+								><span class="punc">,</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">34</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">};</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">35</span>
+							<div class="gutter"></div>
+							<span class="code-content"></span>
+						</div>
+						<div class="code-line">
+							<span class="ln">36</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="kw">export</span>
+								<span class="punc">{ </span
+								><span class="prop">jobs</span
+								><span class="punc">, </span
+								><span class="prop">education</span
+								><span class="punc"> };</span></span
+							>
+						</div>
+					</div>
+				</div>
+				<!-- end editor-content -->
+
+				<!-- MINIMAP -->
+				<div class="minimap">
+					<div class="minimap-highlight"></div>
+					<div class="minimap-content" id="minimap-content">
+						<!-- decorative lines -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- PANEL (Terminal) -->
+		<div class="panel" id="panel">
+			<div class="panel-tabs">
+				<div class="panel-tab active">TERMINAL</div>
+				<div
+					class="panel-tab"
+					onclick="switchPanelTab(this, 'problems')">
+					PROBLEMS
+				</div>
+				<div class="panel-tab" onclick="switchPanelTab(this, 'output')">
+					OUTPUT
+				</div>
+				<button
+					style="
+						margin-left: auto;
+						background: none;
+						border: none;
+						color: var(--gray2);
+						cursor: pointer;
+						font-size: 14px;
+						padding: 0 8px;
+					"
+					onclick="togglePanel()">
+					×
+				</button>
+			</div>
+			<div class="terminal" id="terminal-output">
+				<div>
+					<span class="t-prompt">niels@portfolio</span
+					><span style="color: var(--gray2)">:</span
+					><span style="color: var(--blue)">~/src</span
+					><span style="color: var(--gray2)"> $ </span
+					><span class="t-cmd" id="terminal-cmd"></span>
+				</div>
+				<div id="terminal-lines"></div>
+				<div>
+					<span class="t-prompt">niels@portfolio</span
+					><span style="color: var(--gray2)">:</span
+					><span style="color: var(--blue)">~/src</span
+					><span style="color: var(--gray2)"> $ </span
+					><span class="t-cursor"></span>
+				</div>
+			</div>
+		</div>
+
+		<!-- STATUS BAR -->
+		<div class="statusbar">
+			<div
+				class="status-item"
+				onclick="
+					showNotification(
+						'🌿 On branch: main\n✓ 0 uncommitted changes\n↑ 3 commits ahead of origin',
+						'git',
+					)
+				">
+				<span>⎇ main</span>
+			</div>
+			<div
+				class="status-item"
+				onclick="
+					showNotification('0 errors, 2 warnings (the usual)', 'info')
+				">
+				<span>⚠ 0 errors ⚡ 2 warnings</span>
+			</div>
+			<div class="status-item green">
+				<span>● Live</span>
+			</div>
+			<div class="status-right">
+				<div class="status-item" id="status-ln">Ln 1, Col 1</div>
+				<div
+					class="status-item"
+					onclick="
+						showNotification(
+							'Spaces: 2. Yes, spaces. Fight me.',
+							'info',
+						)
+					">
+					Spaces: 2
+				</div>
+				<div class="status-item">UTF-8</div>
+				<div class="status-item" id="status-lang">TypeScript</div>
+				<div
+					class="status-item"
+					onclick="
+						showNotification(
+							'✅ Prettier: enabled. Semicolons: yes. Singlequotes: yes. Fight me.',
+							'info',
+						)
+					">
+					Prettier
+				</div>
+				<div
+					class="status-item green"
+					onclick="
+						showNotification(
+							'🤖 GitHub Copilot is watching... and judging.',
+							'info',
+						)
+					">
+					⚡ Copilot
+				</div>
+			</div>
+		</div>
+
+		<!-- NOTIFICATION -->
+		<div class="notification" id="notification">
+			<div class="notif-title" id="notif-title">Notification</div>
+			<div id="notif-body"></div>
+		</div>
+
+		<!-- COMMAND PALETTE -->
+		<div
+			class="cmd-overlay"
+			id="cmd-overlay"
+			onclick="closeCmdPalette(event)">
+			<div class="cmd-palette" onclick="event.stopPropagation()">
+				<input
+					class="cmd-input"
+					id="cmd-input"
+					placeholder="> Type a command..."
+					onkeydown="handleCmdKey(event)"
+					oninput="filterCmds(this.value)"
+					autofocus />
+				<div class="cmd-list" id="cmd-list"></div>
+			</div>
+		</div>
+
+		<!-- INFO POPUP -->
+		<div class="info-popup" id="info-popup"></div>
+		<script src="./scripts.js"></script>
+	</body>
+</html>
