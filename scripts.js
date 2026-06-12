@@ -126,15 +126,15 @@ const langMap = {
 	about: "JavaScript",
 	skills: "JavaScript",
 	projects: "JSON",
-	contact: "Markdown",
 	experience: "JavaScript",
+	contact: "Markdown",
 };
 const fileMap = {
 	about: "about.js",
 	skills: "skills.js",
 	projects: "projects.json",
-	contact: "contact.md",
 	experience: "experience.js",
+	contact: "contact.md",
 };
 
 function updateBreadcrumb(section) {
@@ -299,16 +299,16 @@ const commands = [
 		action: () => switchTabByName("projects"),
 	},
 	{
-		label: "Go to Contact",
-		key: "contact",
-		kbd: "Ctrl+4",
-		action: () => switchTabByName("contact"),
-	},
-	{
 		label: "Go to Experience",
 		key: "experience",
-		kbd: "Ctrl+5",
+		kbd: "Ctrl+4",
 		action: () => switchTabByName("experience"),
+	},
+	{
+		label: "Go to Contact",
+		key: "contact",
+		kbd: "Ctrl+5",
+		action: () => switchTabByName("contact"),
 	},
 	{
 		label: "Open Terminal",
