@@ -45,7 +45,13 @@ body {
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	user-select: none;
+}
+
+/* FOCUS STYLES */
+:focus-visible {
+	outline: 2px solid var(--purple-light);
+	outline-offset: 2px;
+	border-radius: 2px;
 }
 
 /* TITLE BAR */
@@ -62,6 +68,7 @@ body {
 .titlebar-dots {
 	display: flex;
 	gap: 6px;
+	user-select: none;
 }
 .dot {
 	width: 12px;
@@ -158,9 +165,6 @@ body {
 	height: 1px;
 	background: var(--bg2);
 }
-.tab-icon {
-	font-size: 11px;
-}
 .tab-close {
 	margin-left: 4px;
 	width: 16px;
@@ -245,6 +249,11 @@ body {
 	border-right: 1px solid var(--bg3);
 	overflow-y: auto;
 	flex-shrink: 0;
+	transition: width 0.2s;
+}
+.sidebar.collapsed {
+	width: 0;
+	overflow: hidden;
 }
 .sidebar::-webkit-scrollbar {
 	width: 4px;
@@ -330,13 +339,6 @@ body {
 .fd-css {
 	background: #2965f1;
 }
-.fd-sh {
-	background: var(--green-bright);
-}
-.fd-env {
-	background: #d97706;
-}
-
 /* EDITOR */
 .editor {
 	flex: 1;
@@ -433,27 +435,7 @@ body {
 	color: var(--green-neon);
 }
 
-/* SECTIONS */
-.section {
-	margin: 4px 0;
-}
-.section-block {
-	background: var(--bg2);
-	border-left: 2px solid transparent;
-	transition: border-color 0.2s;
-	padding: 2px 0;
-}
-.section-block:hover {
-	border-left-color: var(--bg4);
-}
-
 /* SKILL BARS inside code */
-.skill-line {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-	padding: 2px 0;
-}
 .skill-bar-wrap {
 	display: inline-flex;
 	align-items: center;
@@ -579,11 +561,6 @@ body {
 	border: 1px solid var(--bg5);
 	font-family: var(--mono);
 }
-.project-stars {
-	color: var(--yellow);
-	font-size: 11px;
-}
-
 /* MINIMAP */
 .minimap {
 	width: 80px;
@@ -980,11 +957,6 @@ body {
 	border-radius: 10px;
 	font-family: var(--mono);
 }
-.badge-purple {
-	background: var(--purple-dim);
-	color: var(--purple-light);
-	border: 1px solid var(--purple);
-}
 .badge-green {
 	background: var(--green-dim);
 	color: var(--green-neon);
@@ -1119,89 +1091,6 @@ body {
 	display: inline;
 	background: rgba(124, 58, 237, 0.2);
 	border-radius: 2px;
-}
-
-/* SECTION DIVIDER */
-.section-divider {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	padding: 12px 66px 4px;
-	color: var(--gray2);
-	font-size: 11px;
-}
-.divider-line {
-	flex: 1;
-	height: 1px;
-	background: var(--bg3);
-}
-
-/* AUTOCOMPLETE */
-.autocomplete {
-	position: absolute;
-	background: var(--bg3);
-	border: 1px solid var(--bg5);
-	border-radius: 4px;
-	padding: 4px 0;
-	z-index: 200;
-	min-width: 200px;
-	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-	display: none;
-}
-.autocomplete.visible {
-	display: block;
-}
-.ac-item {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	padding: 4px 12px;
-	font-size: 12px;
-	color: var(--gray4);
-	cursor: pointer;
-}
-.ac-item:hover {
-	background: var(--purple-glow);
-	color: var(--white);
-}
-.ac-kind {
-	font-size: 9px;
-	background: var(--bg4);
-	color: var(--purple-light);
-	padding: 1px 4px;
-	border-radius: 2px;
-}
-
-/* PEEK DEFINITION */
-.peek {
-	margin: 4px 66px 8px;
-	border: 1px solid var(--bg5);
-	border-radius: 4px;
-	overflow: hidden;
-	display: none;
-}
-.peek.visible {
-	display: block;
-}
-.peek-header {
-	background: var(--bg1);
-	padding: 4px 12px;
-	font-size: 11px;
-	color: var(--gray3);
-	border-bottom: 1px solid var(--bg3);
-}
-.peek-body {
-	background: var(--bg1);
-	padding: 8px 0;
-}
-
-/* INDENT GUIDES */
-.indent-guide {
-	display: inline-block;
-	width: 1px;
-	height: 100%;
-	background: var(--bg4);
-	margin-right: 15px;
 }
 
 .hidden-section {

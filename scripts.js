@@ -28,7 +28,6 @@ const skills = {
 function renderSkills(containerId, skillArr) {
 	const el = document.getElementById(containerId);
 
-	// Ga naar de buitenste wrapper van deze container
 	const wrapper = el.closest('div[style*="margin: 4px"]') || el.parentElement;
 
 	let prevLine = null;
@@ -100,10 +99,12 @@ for (let i = 0; i < 80; i++) {
 
 // Tab switching
 function switchTab(tabEl, section) {
-	document
-		.querySelectorAll(".tab")
-		.forEach((t) => t.classList.remove("active"));
+	document.querySelectorAll(".tab").forEach((t) => {
+		t.classList.remove("active");
+		t.setAttribute("aria-selected", "false");
+	});
 	tabEl.classList.add("active");
+	tabEl.setAttribute("aria-selected", "true");
 	showSection(section);
 	updateBreadcrumb(section);
 	updateStatusBar(section);
@@ -156,7 +157,7 @@ function togglePanel() {
 		panelOpen &&
 		document.getElementById("terminal-cmd").textContent === ""
 	) {
-		typeTerminalCmd("node about.js");
+		typeTerminalCmd("npm run dev");
 	}
 }
 
@@ -178,25 +179,14 @@ function showTerminalOutput() {
 	const lines = document.getElementById("terminal-lines");
 	const outputs = [
 		{ cls: "t-out", txt: "" },
-		{
-			cls: "t-success",
-			txt: "✓ Compiled successfully in 238ms",
-		},
+		{ cls: "t-out", txt: "> portfolio@1.0.0 dev" },
 		{ cls: "t-out", txt: "" },
-		{
-			cls: "t-out",
-			txt: '{ name: "Niels Aling", role: "Full-Stack Developer"',
-		},
-		{
-			cls: "t-out",
-			txt: "  availableForWork: true, ← you should click this",
-		},
-		{ cls: "t-out", txt: "  coffeePerDay: Infinity }" },
+		{ cls: "t-out", txt: "Starting development server..." },
+		{ cls: "t-success", txt: "✓ Server ready at http://localhost:8080" },
 		{ cls: "t-out", txt: "" },
-		{
-			cls: "t-success",
-			txt: "→ Process exited with code 0  (hire him)",
-		},
+		{ cls: "t-out", txt: "  ➜  Developer:  Niels Aling" },
+		{ cls: "t-out", txt: "  ➜  Role:       Web Developer" },
+		{ cls: "t-success", txt: "  ➜  Status:     open to work" },
 	];
 	let i = 0;
 	const next = () => {
@@ -213,9 +203,8 @@ function showTerminalOutput() {
 
 // Run button
 const runMessages = [
-	"> node skills.js\n✓ Build successful\n→ All 94 tests passed\n💚 0 vulnerabilities found",
+	"> npm run dev",
 	"> npm run deploy\n📦 Bundling...\n✓ Deployed to prod in 3.2s\n🚀 Live at portfolio.paradiddle97.dev",
-	"> git log --oneline -5\nabc123 fix: that bug I introduced yesterday\ndef456 feat: add dark mode (it's already dark)\nghi789 chore: update deps (yolo)\n...",
 	"> echo $AVAILABLE_FOR_HIRE\ntrue\n💡 Hint: contact.md has the details",
 ];
 let runIdx = 0;
@@ -244,7 +233,7 @@ function runCode() {
 function formatDocument() {
 	const ec = document.getElementById("editor-content");
 	ec.classList.add("format-flash");
-	showNotification("✨ Document formatted. 3 semicolons added.", "success");
+	showNotification("✨ Document formatted.", "success");
 	setTimeout(() => ec.classList.remove("format-flash"), 800);
 }
 
@@ -252,12 +241,7 @@ function formatDocument() {
 let sidebarOpen = true;
 function toggleSidebar() {
 	sidebarOpen = !sidebarOpen;
-	document.getElementById("sidebar").style.width = sidebarOpen
-		? "var(--sidebar-w)"
-		: "0";
-	document.getElementById("sidebar").style.overflow = sidebarOpen
-		? ""
-		: "hidden";
+	document.getElementById("sidebar").classList.toggle("collapsed", !sidebarOpen);
 }
 
 // Notification
@@ -417,6 +401,14 @@ function handleCmdKey(e) {
 	}
 }
 
+// Keyboard accessibility for role="button" elements
+document.addEventListener("keydown", (e) => {
+	if ((e.key === "Enter" || e.key === " ") && e.target.matches('[role="button"], [role="tab"]')) {
+		e.preventDefault();
+		e.target.click();
+	}
+});
+
 // Keyboard shortcuts
 document.addEventListener("keydown", (e) => {
 	if ((e.metaKey || e.ctrlKey) && e.key === "p") {
@@ -431,7 +423,7 @@ document.addEventListener("keydown", (e) => {
 		e.preventDefault();
 		toggleSidebar();
 	}
-	if (e.key === "Escape") {
+	if (e.key === "Escape" && document.getElementById("cmd-overlay").classList.contains("show")) {
 		closeCmdPalette();
 	}
 });
@@ -482,22 +474,31 @@ function toggleFullscreen() {
 }
 
 // Panel tab switcher
+let savedTerminalHTML = "";
 function switchPanelTab(el, name) {
-	document
-		.querySelectorAll(".panel-tab")
-		.forEach((t) => t.classList.remove("active"));
+	document.querySelectorAll(".panel-tab").forEach((t) => {
+		t.classList.remove("active");
+		t.setAttribute("aria-selected", "false");
+	});
 	el.classList.add("active");
+	el.setAttribute("aria-selected", "true");
 	const lines = document.getElementById("terminal-lines");
+	if (name === "terminal") {
+		lines.innerHTML = savedTerminalHTML;
+	} else {
+		savedTerminalHTML = lines.innerHTML;
+	}
 	if (name === "problems") {
 		lines.innerHTML = `
-      <div class="t-out" style="color:var(--yellow)">⚠ skills.js(43): Variable 'Bugs.ZERO' might be a lie  [eslint]</div>
-      <div class="t-out" style="color:var(--yellow)">⚠ about.js(18): 'pretending to do yoga' is not a valid hobby type  [eslint]</div>
-      <div class="t-success">● No errors. You're doing great.</div>
+      <div class="t-out" style="color:var(--yellow)">⚠ niels.js(1): age approaching 30 — critical update required</div>
+      <div class="t-out" style="color:var(--yellow)">⚠ niels.js(2): openToWork: true — hire me</div>
+      <div class="t-out" style="color:var(--yellow)">⚠ niels.js(4): too many side projects, not enough hours in a day</div>
+      <div class="t-success">● 0 errors.</div>
     `;
 	} else if (name === "output") {
 		lines.innerHTML = `
-      <div class="t-out">[12:00:01] Starting portfolio.js...</div>
-      <div class="t-out">[12:00:02] Loaded 4 sections, 0 bugs (see warnings)</div>
+      <div class="t-out">[12:00:01] Starting dev.portfolio...</div>
+      <div class="t-out">[12:00:02] Loaded 5 sections</div>
       <div class="t-success">[12:00:02] Portfolio ready. Awaiting recruiters...</div>
     `;
 	}

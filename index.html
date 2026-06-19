@@ -15,6 +15,9 @@
 			<div class="titlebar-dots">
 				<div
 					class="dot dot-red"
+					role="button"
+					tabindex="0"
+					aria-label="Close"
 					onclick="
 						showNotification(
 							'Close? Use Cmd+Q... just kidding, you can\'t quit me that easily.',
@@ -23,21 +26,24 @@
 					"></div>
 				<div
 					class="dot dot-yellow"
+					role="button"
+					tabindex="0"
+					aria-label="Minimize"
 					onclick="
 						showNotification(
 							'Minimize? My portfolio deserves your full attention.',
 							'warn',
 						)
 					"></div>
-				<div class="dot dot-green" onclick="toggleFullscreen()"></div>
+				<div class="dot dot-green" role="button" tabindex="0" aria-label="Fullscreen" onclick="toggleFullscreen()"></div>
 			</div>
 			<div class="titlebar-menu">
-				<span class="menu-item" onclick="openCmdPalette()">File</span>
-				<span class="menu-item" onclick="openCmdPalette()">Edit</span>
-				<span class="menu-item" onclick="openCmdPalette()">View</span>
-				<span class="menu-item" onclick="openCmdPalette()">Go</span>
-				<span class="menu-item" onclick="openCmdPalette()">Run</span>
-				<span class="menu-item" onclick="openCmdPalette()"
+				<span class="menu-item" role="button" tabindex="0" onclick="openCmdPalette()">File</span>
+				<span class="menu-item" role="button" tabindex="0" onclick="openCmdPalette()">Edit</span>
+				<span class="menu-item" role="button" tabindex="0" onclick="openCmdPalette()">View</span>
+				<span class="menu-item" role="button" tabindex="0" onclick="openCmdPalette()">Go</span>
+				<span class="menu-item" role="button" tabindex="0" onclick="openCmdPalette()">Run</span>
+				<span class="menu-item" onclick="togglePanel()"
 					>Terminal</span
 				>
 			</div>
@@ -45,47 +51,62 @@
 		</div>
 
 		<!-- TAB BAR -->
-		<div class="tabbar" id="tabbar">
+		<div class="tabbar" id="tabbar" role="tablist" aria-label="Portfolio sections">
 			<div
 				class="tab active"
+				role="tab"
+				tabindex="0"
+				aria-selected="true"
 				data-section="about"
 				onclick="switchTab(this, 'about')">
-				<span style="color: #e44d26; font-size: 10px">&lt;/&gt;</span>
+				<span style="color: #e44d26; font-size: 10px" aria-hidden="true">&lt;/&gt;</span>
 				<span>about.html</span>
-				<span class="tab-close">×</span>
+				<span class="tab-close" aria-hidden="true">×</span>
 			</div>
 			<div
 				class="tab"
+				role="tab"
+				tabindex="0"
+				aria-selected="false"
 				data-section="skills"
 				onclick="switchTab(this, 'skills')">
-				<span style="color: #e6a23c; font-size: 10px">JS</span>
+				<span style="color: #e6a23c; font-size: 10px" aria-hidden="true">JS</span>
 				<span>skills.js</span>
-				<span class="tab-close">×</span>
+				<span class="tab-close" aria-hidden="true">×</span>
 			</div>
 			<div
 				class="tab"
+				role="tab"
+				tabindex="0"
+				aria-selected="false"
 				data-section="projects"
 				onclick="switchTab(this, 'projects')">
-				<span style="color: #d4a827; font-size: 10px">{}</span>
+				<span style="color: #d4a827; font-size: 10px" aria-hidden="true">{}</span>
 				<span>projects.json</span>
-				<span class="tab-modified"></span>
-				<span class="tab-close">×</span>
+				<span class="tab-modified" aria-hidden="true"></span>
+				<span class="tab-close" aria-hidden="true">×</span>
 			</div>
 			<div
 				class="tab"
+				role="tab"
+				tabindex="0"
+				aria-selected="false"
 				data-section="experience"
 				onclick="switchTab(this, 'experience')">
-				<span style="color: #2965f1; font-size: 10px">CSS</span>
+				<span style="color: #2965f1; font-size: 10px" aria-hidden="true">CSS</span>
 				<span>experience.css</span>
-				<span class="tab-close">×</span>
+				<span class="tab-close" aria-hidden="true">×</span>
 			</div>
 			<div
 				class="tab"
+				role="tab"
+				tabindex="0"
+				aria-selected="false"
 				data-section="contact"
 				onclick="switchTab(this, 'contact')">
-				<span style="color: #6a9955; font-size: 10px">#</span>
+				<span style="color: #6a9955; font-size: 10px" aria-hidden="true">#</span>
 				<span>contact.md</span>
-				<span class="tab-close">×</span>
+				<span class="tab-close" aria-hidden="true">×</span>
 			</div>
 		</div>
 
@@ -151,7 +172,10 @@
 			<div class="activity-bar">
 				<div
 					class="activity-icon active"
+					role="button"
+					tabindex="0"
 					title="Explorer"
+					aria-label="Toggle Explorer"
 					onclick="toggleSidebar()">
 					<svg
 						viewBox="0 0 24 24"
@@ -164,7 +188,10 @@
 				</div>
 				<div
 					class="activity-icon"
+					role="button"
+					tabindex="0"
 					title="Search"
+					aria-label="Search"
 					onclick="openCmdPalette()">
 					<svg
 						viewBox="0 0 24 24"
@@ -177,10 +204,13 @@
 				</div>
 				<div
 					class="activity-icon"
+					role="button"
+					tabindex="0"
 					title="Git"
+					aria-label="Git"
 					onclick="
 						showNotification(
-							'🌿 1 branch ahead of main: feature/hire-me',
+							'On branch: main\nno uncommitted changes',
 							'git',
 						)
 					">
@@ -197,10 +227,13 @@
 				</div>
 				<div
 					class="activity-icon"
+					role="button"
+					tabindex="0"
 					title="Extensions"
+					aria-label="Extensions"
 					onclick="
 						showNotification(
-							'📦 31 extensions installed. No, I don\'t have Prettier. Yes, I use tabs.',
+							'📦 31 extensions installed.',
 							'ext',
 						)
 					">
@@ -217,7 +250,10 @@
 				</div>
 				<div
 					class="activity-icon activity-bottom"
+					role="button"
+					tabindex="0"
 					title="Settings"
+					aria-label="Settings"
 					onclick="openCmdPalette()">
 					<svg
 						viewBox="0 0 24 24"
@@ -244,7 +280,7 @@
 					PORTFOLIO — NIELS ALING
 				</div>
 				<div class="file-tree">
-					<div class="tree-folder open" onclick="toggleFolder(this)">
+					<div class="tree-folder open" role="button" tabindex="0" onclick="toggleFolder(this)">
 						<span class="folder-arrow">▶</span>
 						<span style="color: #d4a827; font-size: 13px">📁</span>
 						src
@@ -252,32 +288,42 @@
 					<div class="folder-children">
 						<div
 							class="tree-item active"
+							role="button"
+							tabindex="0"
 							onclick="switchTabByName('about')">
-							<div class="file-dot fd-html"></div>
+							<div class="file-dot fd-html" aria-hidden="true"></div>
 							about.html
 						</div>
 						<div
 							class="tree-item"
+							role="button"
+							tabindex="0"
 							onclick="switchTabByName('skills')">
-							<div class="file-dot fd-js"></div>
+							<div class="file-dot fd-js" aria-hidden="true"></div>
 							skills.js
 						</div>
 						<div
 							class="tree-item"
+							role="button"
+							tabindex="0"
 							onclick="switchTabByName('projects')">
-							<div class="file-dot fd-json"></div>
+							<div class="file-dot fd-json" aria-hidden="true"></div>
 							projects.json
 						</div>
 						<div
 							class="tree-item"
+							role="button"
+							tabindex="0"
 							onclick="switchTabByName('experience')">
-							<div class="file-dot fd-css"></div>
+							<div class="file-dot fd-css" aria-hidden="true"></div>
 							experience.css
 						</div>
 						<div
 							class="tree-item"
+							role="button"
+							tabindex="0"
 							onclick="switchTabByName('contact')">
-							<div class="file-dot fd-md"></div>
+							<div class="file-dot fd-md" aria-hidden="true"></div>
 							contact.md
 						</div>
 					</div>
@@ -1056,7 +1102,7 @@
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="punc">  </span
-								><span class="cls">.holdfast-and-stipe</span>
+								><span class="cls">& .holdfast-and-stipe</span>
 								<span class="punc">{</span></span
 							>
 						</div>
@@ -1086,7 +1132,7 @@
 							<span class="code-content"
 								><span class="prop">    --period</span
 								><span class="punc">: </span
-								><span class="str">"2025 → 2026"</span
+								><span class="str">"2025 → Now"</span
 								><span class="punc">;</span></span
 							>
 						</div>
@@ -1142,7 +1188,7 @@
 											color: var(--yellow);
 											font-size: 11px;
 										"
-										>Frondend Developer</span
+										>Frontend Developer</span
 									>
 									<span
 										style="
@@ -1150,7 +1196,7 @@
 											color: var(--gray2);
 											font-size: 11px;
 										"
-										>2020 – 2022</span
+										>2024 – 2025</span
 									>
 								</div>
 								<div
@@ -1170,7 +1216,7 @@
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="punc">  </span
-								><span class="cls">.clarity</span>
+								><span class="cls">& .clarity</span>
 								<span class="punc">{</span></span
 							>
 						</div>
@@ -1263,7 +1309,7 @@
 											color: var(--gray2);
 											font-size: 11px;
 										"
-										>2020 – 2022</span
+										>2023 – 2024</span
 									>
 								</div>
 								<div
@@ -1282,7 +1328,7 @@
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="punc">  </span
-								><span class="cls">.aardig-amsterdam</span>
+								><span class="cls">& .aardig-amsterdam</span>
 								<span class="punc">{</span></span
 							>
 						</div>
@@ -1402,7 +1448,7 @@
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="punc">  </span
-								><span class="cls">.amsterdam</span>
+								><span class="cls">& .hva</span>
 								<span class="punc">{</span></span
 							>
 						</div>
@@ -1480,7 +1526,7 @@
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="punc">  </span
-								><span class="cls">.utrecht</span>
+								><span class="cls">& .hku</span>
 								<span class="punc">{</span></span
 							>
 						</div>
@@ -1558,7 +1604,7 @@
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="punc">  </span
-								><span class="cls">.lyceum</span>
+								><span class="cls">& .glu</span>
 								<span class="punc">{</span></span
 							>
 						</div>
@@ -1619,15 +1665,16 @@
 							<span class="code-content">
 								<div class="contact-row">
 									<span class="contact-label">email</span>
-									<span
+									<a
 										class="contact-val"
+										href="mailto:niels.aling@hotmail.com"
 										onclick="
 											copyToClipboard(
 												'niels.aling@hotmail.com',
 												'Email copied!',
 											)
 										"
-										>niels.aling@hotmail.com</span
+										>niels.aling@hotmail.com</a
 									>
 								</div>
 							</span>
@@ -1639,15 +1686,12 @@
 							<span class="code-content">
 								<div class="contact-row">
 									<span class="contact-label">github</span>
-									<span
+									<a
 										class="contact-val"
-										onclick="
-											showNotification(
-												'🐙 Opening github.com/paradiddle97',
-												'link',
-											)
-										"
-										>github.com/paradiddle97</span
+										href="https://github.com/paradiddle97"
+										target="_blank"
+										rel="noopener noreferrer"
+										>github.com/paradiddle97</a
 									>
 								</div>
 							</span>
@@ -1659,15 +1703,12 @@
 							<span class="code-content">
 								<div class="contact-row">
 									<span class="contact-label">linkedin</span>
-									<span
+									<a
 										class="contact-val"
-										onclick="
-											showNotification(
-												'💼 Opening LinkedIn...',
-												'link',
-											)
-										"
-										>linkedin.com/in/nielsaling</span
+										href="https://linkedin.com/in/nielsaling"
+										target="_blank"
+										rel="noopener noreferrer"
+										>linkedin.com/in/nielsaling</a
 									>
 								</div>
 							</span>
@@ -1708,14 +1749,17 @@
 
 		<!-- PANEL (Terminal) -->
 		<div class="panel" id="panel">
-			<div class="panel-tabs">
-				<div class="panel-tab active">TERMINAL</div>
+			<div class="panel-tabs" role="tablist" aria-label="Panel tabs">
+				<div class="panel-tab active" role="tab" tabindex="0" aria-selected="true" onclick="switchPanelTab(this, 'terminal')">TERMINAL</div>
 				<div
 					class="panel-tab"
+					role="tab"
+					tabindex="0"
+					aria-selected="false"
 					onclick="switchPanelTab(this, 'problems')">
 					PROBLEMS
 				</div>
-				<div class="panel-tab" onclick="switchPanelTab(this, 'output')">
+				<div class="panel-tab" role="tab" tabindex="0" aria-selected="false" onclick="switchPanelTab(this, 'output')">
 					OUTPUT
 				</div>
 				<button
@@ -1728,6 +1772,7 @@
 						font-size: 14px;
 						padding: 0 8px;
 					"
+					aria-label="Close terminal"
 					onclick="togglePanel()">
 					×
 				</button>
@@ -1785,6 +1830,7 @@
 					Port : 8080
 				</div>
 				<div class="status-item">UTF-8</div>
+				<div class="status-item" id="status-ln" aria-live="polite">Ln 1, Col 1</div>
 				<div class="status-item" id="status-lang">HTML</div>
 				<div
 					class="status-item"
@@ -1800,7 +1846,7 @@
 		</div>
 
 		<!-- NOTIFICATION -->
-		<div class="notification" id="notification">
+		<div class="notification" id="notification" role="status" aria-live="polite">
 			<div class="notif-title" id="notif-title">Notification</div>
 			<div id="notif-body"></div>
 		</div>
@@ -1810,7 +1856,7 @@
 			class="cmd-overlay"
 			id="cmd-overlay"
 			onclick="closeCmdPalette(event)">
-			<div class="cmd-palette" onclick="event.stopPropagation()">
+			<div class="cmd-palette" role="dialog" aria-modal="true" aria-label="Command Palette" onclick="event.stopPropagation()">
 				<input
 					class="cmd-input"
 					id="cmd-input"
