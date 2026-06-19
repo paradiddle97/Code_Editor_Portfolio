@@ -123,17 +123,17 @@ function showSection(name) {
 }
 
 const langMap = {
-	about: "JavaScript",
+	about: "HTML",
 	skills: "JavaScript",
 	projects: "JSON",
-	experience: "JavaScript",
+	experience: "CSS",
 	contact: "Markdown",
 };
 const fileMap = {
-	about: "about.js",
+	about: "about.html",
 	skills: "skills.js",
 	projects: "projects.json",
-	experience: "experience.js",
+	experience: "experience.css",
 	contact: "contact.md",
 };
 
@@ -524,3 +524,5 @@ document.addEventListener("keydown", (e) => {
 
 // Init
 renderCmds();
+const initialTab = document.querySelector(".tab.active");
+if (initialTab) updateStatusBar(initialTab.dataset.section);

@@ -17,7 +17,7 @@
 					class="dot dot-red"
 					onclick="
 						showNotification(
-							'🛑 Close? Use Cmd+Q... just kidding, you can\'t quit me that easily.',
+							'Close? Use Cmd+Q... just kidding, you can\'t quit me that easily.',
 							'info',
 						)
 					"></div>
@@ -25,7 +25,7 @@
 					class="dot dot-yellow"
 					onclick="
 						showNotification(
-							'💛 Minimize? My portfolio deserves your full attention.',
+							'Minimize? My portfolio deserves your full attention.',
 							'warn',
 						)
 					"></div>
@@ -50,8 +50,8 @@
 				class="tab active"
 				data-section="about"
 				onclick="switchTab(this, 'about')">
-				<span style="color: #e6a23c; font-size: 10px">JS</span>
-				<span>about.js</span>
+				<span style="color: #e44d26; font-size: 10px">&lt;/&gt;</span>
+				<span>about.html</span>
 				<span class="tab-close">×</span>
 			</div>
 			<div
@@ -75,8 +75,8 @@
 				class="tab"
 				data-section="experience"
 				onclick="switchTab(this, 'experience')">
-				<span style="color: #e6a23c; font-size: 10px">JS</span>
-				<span>experience.js</span>
+				<span style="color: #2965f1; font-size: 10px">CSS</span>
+				<span>experience.css</span>
 				<span class="tab-close">×</span>
 			</div>
 			<div
@@ -253,8 +253,8 @@
 						<div
 							class="tree-item active"
 							onclick="switchTabByName('about')">
-							<div class="file-dot fd-js"></div>
-							about.js
+							<div class="file-dot fd-html"></div>
+							about.html
 						</div>
 						<div
 							class="tree-item"
@@ -271,8 +271,8 @@
 						<div
 							class="tree-item"
 							onclick="switchTabByName('experience')">
-							<div class="file-dot fd-js"></div>
-							experience.js
+							<div class="file-dot fd-css"></div>
+							experience.css
 						</div>
 						<div
 							class="tree-item"
@@ -294,7 +294,7 @@
 						<span class="bc-item">src</span>
 						<span class="bc-sep">›</span>
 						<span class="bc-item active" id="bc-current"
-							>about.js</span
+							>about.html</span
 						>
 					</div>
 
@@ -305,7 +305,7 @@
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="cmt"
-									>//============================================================</span
+									>&lt;!-- ============================================================ --&gt;</span
 								></span
 							>
 						</div>
@@ -313,7 +313,7 @@
 							<span class="ln">2</span>
 							<div class="gutter"></div>
 							<span class="code-content"
-								><span class="cmt">// about.js </span></span
+								><span class="cmt">&lt;!-- about.html </span></span
 							>
 						</div>
 						<div class="code-line">
@@ -321,7 +321,7 @@
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="cmt"
-									>// Last modified: today</span
+									>&lt;!-- Last modified: today</span
 								></span
 							>
 						</div>
@@ -330,7 +330,7 @@
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="cmt"
-									>//============================================================</span
+									>&lt;!-- ============================================================ --&gt;</span
 								></span
 							>
 						</div>
@@ -343,10 +343,40 @@
 							<span class="ln">6</span>
 							<div class="gutter"></div>
 							<span class="code-content"
-								><span class="kw">const</span>
-								<span class="prop">profile</span>
-								<span class="op">=</span>
-								<span class="punc">{</span></span
+								><span class="cmt">&lt;!DOCTYPE html&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">7</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">&lt;</span
+								><span class="tag">html</span>
+								<span class="attr">lang</span
+								><span class="punc">=</span
+								><span class="val">"en"</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">8</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">&lt;</span
+								><span class="tag">body</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">9</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">  &lt;</span
+								><span class="tag">div</span>
+								<span class="attr">class</span
+								><span class="punc">=</span
+								><span class="val">"profile"</span
+								><span class="punc">&gt;</span></span
 							>
 						</div>
 
@@ -379,96 +409,130 @@
 						</div>
 
 						<div class="code-line">
-							<span class="ln">7</span>
-							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">name</span
-								><span class="punc">: </span
-								><span class="str">"Niels Aling"</span
-								><span class="punc">,</span></span
-							>
-						</div>
-						<div class="code-line">
-							<span class="ln">8</span>
-							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">age</span
-								><span class="punc">: </span
-								><span class="num">28</span
-								><span class="punc">,</span>
-								<span class="cmt"
-									>// might be outdated depending on when you
-									read this</span
-								></span
-							>
-						</div>
-						<div class="code-line">
-							<span class="ln">9</span>
-							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">location</span
-								><span class="punc">: </span
-								><span class="str">"Utrecht, NL"</span
-								><span class="punc">,</span></span
-							>
-						</div>
-						<div class="code-line">
 							<span class="ln">10</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">availableForWork</span
-								><span class="punc">: </span
-								><span class="kw">true</span
-								><span class="punc">,</span>
-							</span>
+							<span class="code-content"
+								><span class="punc">    &lt;</span
+								><span class="tag">span</span>
+								<span class="attr">class</span
+								><span class="punc">=</span
+								><span class="val">"name"</span
+								><span class="punc">&gt;</span
+								><span class="str">Niels Aling</span
+								><span class="punc">&lt;/</span
+								><span class="tag">span</span
+								><span class="punc">&gt;</span></span
+							>
 						</div>
 						<div class="code-line">
 							<span class="ln">11</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">superpowers</span
-								><span class="punc">: [</span
-								><span class="str">"adaptive"</span
-								><span class="punc">, </span
-								><span class="str">"creative"</span
-								><span class="punc">, </span
-								><span class="str">"open-minded"</span
-								><span class="punc">],</span></span
+							<span class="code-content"
+								><span class="punc">    &lt;</span
+								><span class="tag">span</span>
+								<span class="attr">class</span
+								><span class="punc">=</span
+								><span class="val">"age"</span
+								><span class="punc">&gt;</span
+								><span class="num">28</span
+								><span class="punc">&lt;/</span
+								><span class="tag">span</span
+								><span class="punc">&gt;</span>
+								<span class="cmt"
+									>&lt;!-- might be outdated depending on when you
+									read this --&gt;</span
+								></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">12</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">hobbies</span
-								><span class="punc">: [</span
-								><span class="str">"gaming"</span
-								><span class="punc">, </span
-								><span class="str">"music"</span
-								><span class="punc">, </span
-								><span class="str">"fixing shit"</span
-								><span class="punc">],</span></span
+							<span class="code-content"
+								><span class="punc">    &lt;</span
+								><span class="tag">span</span>
+								<span class="attr">class</span
+								><span class="punc">=</span
+								><span class="val">"location"</span
+								><span class="punc">&gt;</span
+								><span class="str">Utrecht, NL</span
+								><span class="punc">&lt;/</span
+								><span class="tag">span</span
+								><span class="punc">&gt;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">13</span>
 							<div class="gutter"></div>
 							<span class="code-content"
-								><span class="punc">};</span></span
+								><span class="punc">    &lt;</span
+								><span class="tag">span</span>
+								<span class="attr">class</span
+								><span class="punc">=</span
+								><span class="val">"available-for-work"</span
+								><span class="punc">&gt;</span
+								><span class="kw">true</span
+								><span class="punc">&lt;/</span
+								><span class="tag">span</span
+								><span class="punc">&gt;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">14</span>
 							<div class="gutter"></div>
-							<span class="code-content"></span>
+							<span class="code-content"
+								><span class="punc">    &lt;</span
+								><span class="tag">ul</span>
+								<span class="attr">class</span
+								><span class="punc">=</span
+								><span class="val">"superpowers"</span
+								><span class="punc">&gt;</span
+								><span class="str">adaptive, creative, open-minded</span
+								><span class="punc">&lt;/</span
+								><span class="tag">ul</span
+								><span class="punc">&gt;</span></span
+							>
 						</div>
 						<div class="code-line">
 							<span class="ln">15</span>
 							<div class="gutter"></div>
 							<span class="code-content"
-								><span class="kw">export default</span>
-								<span class="prop">profile</span
-								><span class="punc">;</span></span
+								><span class="punc">    &lt;</span
+								><span class="tag">ul</span>
+								<span class="attr">class</span
+								><span class="punc">=</span
+								><span class="val">"hobbies"</span
+								><span class="punc">&gt;</span
+								><span class="str">gaming, music, fixing shit</span
+								><span class="punc">&lt;/</span
+								><span class="tag">ul</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">16</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">  &lt;/</span
+								><span class="tag">div</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">17</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">&lt;/</span
+								><span class="tag">body</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">18</span>
+							<div class="gutter"></div>
+							<span class="code-content"
+								><span class="punc">&lt;/</span
+								><span class="tag">html</span
+								><span class="punc">&gt;</span></span
 							>
 						</div>
 					</div>
@@ -893,7 +957,7 @@
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="cmt"
-									>//============================================================</span
+									>/* ====================================================== */</span
 								></span
 							>
 						</div>
@@ -902,8 +966,8 @@
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="cmt"
-									>// experience.js — Work and education
-									history</span
+									>/* experience.css — Work and education
+									history */</span
 								></span
 							>
 						</div>
@@ -912,7 +976,7 @@
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="cmt"
-									>//============================================================</span
+									>/* ====================================================== */</span
 								></span
 							>
 						</div>
@@ -925,10 +989,8 @@
 							<span class="ln">5</span>
 							<div class="gutter"></div>
 							<span class="code-content"
-								><span class="kw">const</span>
-								<span class="prop">jobs</span>
-								<span class="op">=</span>
-								<span class="punc">[</span></span
+								><span class="cls">.jobs</span>
+								<span class="punc">{</span></span
 							>
 						</div>
 						<div style="margin: 4px 66px 8px">
@@ -992,62 +1054,57 @@
 						<div class="code-line">
 							<span class="ln">6</span>
 							<div class="gutter"></div>
-							<span class="code-content">
+							<span class="code-content"
+								><span class="punc">  </span
+								><span class="cls">.holdfast-and-stipe</span>
 								<span class="punc">{</span></span
 							>
 						</div>
-
 						<div class="code-line">
 							<span class="ln">7</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">company</span
+							<span class="code-content"
+								><span class="prop">    --company</span
 								><span class="punc">: </span
 								><span class="str">"Holdfast and Stipe"</span
-								><span class="punc">,</span></span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">8</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">role</span
+							<span class="code-content"
+								><span class="prop">    --role</span
 								><span class="punc">: </span
 								><span class="str">"Digital Developer"</span
-								><span class="punc">,</span></span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">9</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">period</span
+							<span class="code-content"
+								><span class="prop">    --period</span
 								><span class="punc">: </span
 								><span class="str">"2025 → 2026"</span
-								><span class="punc">,</span></span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">10</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">stack</span
-								><span class="punc">: [</span
-								><span class="str">"Webflow"</span
-								><span class="punc">, </span
-								><span class="str">"Zapier"</span
-								><span class="punc">, </span
-								><span class="str">"Javascript"</span
-								><span class="punc">, </span
-								><span class="str">"CSS"</span
-								><span class="punc">],</span></span
+							<span class="code-content"
+								><span class="prop">    --stack</span
+								><span class="punc">: </span
+								><span class="val">webflow, zapier, javascript, css</span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">11</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="punc">},</span></span
+							<span class="code-content"
+								><span class="punc">  }</span></span
 							>
 						</div>
 
@@ -1111,60 +1168,57 @@
 						<div class="code-line">
 							<span class="ln">12</span>
 							<div class="gutter"></div>
-							<span class="code-content">
+							<span class="code-content"
+								><span class="punc">  </span
+								><span class="cls">.clarity</span>
 								<span class="punc">{</span></span
 							>
 						</div>
-
 						<div class="code-line">
 							<span class="ln">13</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">company</span
+							<span class="code-content"
+								><span class="prop">    --company</span
 								><span class="punc">: </span
 								><span class="str">"Clarity"</span
-								><span class="punc">,</span></span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">14</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">role</span
+							<span class="code-content"
+								><span class="prop">    --role</span
 								><span class="punc">: </span
 								><span class="str">"Frontend Developer"</span
-								><span class="punc">,</span></span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">15</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">period</span
+							<span class="code-content"
+								><span class="prop">    --period</span
 								><span class="punc">: </span
 								><span class="str">"2024 → 2025"</span
-								><span class="punc">,</span></span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">16</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">stack</span
-								><span class="punc">: [</span
-								><span class="str">"Next.js"</span
-								><span class="punc">, </span
-								><span class="str">"Vue.js"</span
-								><span class="punc">, </span
-								><span class="str">"React"</span
-								><span class="punc">],</span></span
+							<span class="code-content"
+								><span class="prop">    --stack</span
+								><span class="punc">: </span
+								><span class="val">next-js, vue-js, react</span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">17</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="punc">},</span></span
+							<span class="code-content"
+								><span class="punc">  }</span></span
 							>
 						</div>
 						<div style="margin: 4px 66px 8px">
@@ -1226,59 +1280,57 @@
 						<div class="code-line">
 							<span class="ln">18</span>
 							<div class="gutter"></div>
-							<span class="code-content">
+							<span class="code-content"
+								><span class="punc">  </span
+								><span class="cls">.aardig-amsterdam</span>
 								<span class="punc">{</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">19</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">company</span
+							<span class="code-content"
+								><span class="prop">    --company</span
 								><span class="punc">: </span
 								><span class="str">"aardig amsterdam"</span
-								><span class="punc">,</span></span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">20</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">role</span
+							<span class="code-content"
+								><span class="prop">    --role</span
 								><span class="punc">: </span
 								><span class="str">"Low-code Developer"</span
-								><span class="punc">,</span></span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">21</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">period</span
+							<span class="code-content"
+								><span class="prop">    --period</span
 								><span class="punc">: </span
 								><span class="str">"2023 → 2024"</span
-								><span class="punc">,</span></span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">22</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">stack</span
-								><span class="punc">: [</span
-								><span class="str">"Webflow"</span
-								><span class="punc">, </span
-								><span class="str">"Zapier"</span
-								><span class="punc">, </span
-								><span class="str">"HubSpot"</span
-								><span class="punc">],</span></span
+							<span class="code-content"
+								><span class="prop">    --stack</span
+								><span class="punc">: </span
+								><span class="val">webflow, zapier, hubspot</span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">23</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="punc">}</span></span
+							<span class="code-content"
+								><span class="punc">  }</span></span
 							>
 						</div>
 
@@ -1286,7 +1338,7 @@
 							<span class="ln">24</span>
 							<div class="gutter"></div>
 							<span class="code-content"
-								><span class="punc">];</span></span
+								><span class="punc">}</span></span
 							>
 						</div>
 
@@ -1299,10 +1351,8 @@
 							<span class="ln">26</span>
 							<div class="gutter"></div>
 							<span class="code-content"
-								><span class="kw">const</span>
-								<span class="prop">education</span>
-								<span class="op">=</span>
-								<span class="punc">[</span></span
+								><span class="cls">.education</span>
+								<span class="punc">{</span></span
 							>
 						</div>
 						<div style="margin: 4px 66px 8px">
@@ -1350,33 +1400,37 @@
 						<div class="code-line">
 							<span class="ln">27</span>
 							<div class="gutter"></div>
-							<span class="code-content">{</span>
+							<span class="code-content"
+								><span class="punc">  </span
+								><span class="cls">.amsterdam</span>
+								<span class="punc">{</span></span
+							>
 						</div>
 						<div class="code-line">
 							<span class="ln">28</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">degree</span
+							<span class="code-content"
+								><span class="prop">    --degree</span
 								><span class="punc">: </span
 								><span class="str">"Bachelor's degree"</span
-								><span class="punc">,</span></span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">29</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">location</span
+							<span class="code-content"
+								><span class="prop">    --field</span
 								><span class="punc">: </span
-								><span class="str">"Amsterdam"</span
-								><span class="punc">,</span></span
+								><span class="str">"Communication Multimedia Design"</span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">30</span>
 							<div class="gutter"></div>
 							<span class="code-content"
-								><span class="punc">},</span></span
+								><span class="punc">  }</span></span
 							>
 						</div>
 						<div style="margin: 4px 66px 8px">
@@ -1424,33 +1478,37 @@
 						<div class="code-line">
 							<span class="ln">31</span>
 							<div class="gutter"></div>
-							<span class="code-content">{</span>
+							<span class="code-content"
+								><span class="punc">  </span
+								><span class="cls">.utrecht</span>
+								<span class="punc">{</span></span
+							>
 						</div>
 						<div class="code-line">
 							<span class="ln">32</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">degree</span
+							<span class="code-content"
+								><span class="prop">    --degree</span
 								><span class="punc">: </span
 								><span class="str">"Associate's Degree"</span
-								><span class="punc">,</span></span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">33</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">location</span
+							<span class="code-content"
+								><span class="prop">    --field</span
 								><span class="punc">: </span
-								><span class="str">"Utrecht"</span
-								><span class="punc">,</span></span
+								><span class="str">"Design Digital Media"</span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">34</span>
 							<div class="gutter"></div>
 							<span class="code-content"
-								><span class="punc">},</span></span
+								><span class="punc">  }</span></span
 							>
 						</div>
 						<div style="margin: 4px 66px 8px">
@@ -1498,50 +1556,44 @@
 						<div class="code-line">
 							<span class="ln">35</span>
 							<div class="gutter"></div>
-							<span class="code-content">{</span>
+							<span class="code-content"
+								><span class="punc">  </span
+								><span class="cls">.lyceum</span>
+								<span class="punc">{</span></span
+							>
 						</div>
 						<div class="code-line">
 							<span class="ln">36</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">degree</span
+							<span class="code-content"
+								><span class="prop">    --degree</span
 								><span class="punc">: </span
 								><span class="str">"MBO 4"</span
-								><span class="punc">,</span></span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">37</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">location</span
+							<span class="code-content"
+								><span class="prop">    --field</span
 								><span class="punc">: </span
-								><span class="str">"Utrecht"</span
-								><span class="punc">,</span></span
+								><span class="str">"Animation Audio / Visual Design"</span
+								><span class="punc">;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">38</span>
 							<div class="gutter"></div>
 							<span class="code-content"
-								><span class="punc">};</span></span
+								><span class="punc">  }</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">39</span>
 							<div class="gutter"></div>
-							<span class="code-content"></span>
-						</div>
-						<div class="code-line">
-							<span class="ln">40</span>
-							<div class="gutter"></div>
 							<span class="code-content"
-								><span class="kw">export</span>
-								<span class="punc">{ </span
-								><span class="prop">jobs</span
-								><span class="punc">, </span
-								><span class="prop">education</span
-								><span class="punc"> };</span></span
+								><span class="punc">}</span></span
 							>
 						</div>
 					</div>
@@ -1705,7 +1757,7 @@
 				class="status-item"
 				onclick="
 					showNotification(
-						'🌿 On branch: main\n✓ 0 uncommitted changes\n↑ 3 commits ahead of origin',
+						'On branch: main\n✓ 0 uncommitted changes',
 						'git',
 					)
 				">
@@ -1722,38 +1774,27 @@
 				<span>● Live</span>
 			</div>
 			<div class="status-right">
-				<div class="status-item" id="status-ln">Ln 1, Col 1</div>
 				<div
 					class="status-item"
 					onclick="
 						showNotification(
-							'Spaces: 2. Yes, spaces. Fight me.',
+							'Beep Boop. Server is running on port 8080.',
 							'info',
 						)
 					">
-					Spaces: 2
+					Port : 8080
 				</div>
 				<div class="status-item">UTF-8</div>
-				<div class="status-item" id="status-lang">JavaScript</div>
+				<div class="status-item" id="status-lang">HTML</div>
 				<div
 					class="status-item"
 					onclick="
 						showNotification(
-							'✅ Prettier: enabled. Semicolons: yes. Singlequotes: yes. Fight me.',
+							'Prettier: enabled.',
 							'info',
 						)
 					">
-					Prettier
-				</div>
-				<div
-					class="status-item green"
-					onclick="
-						showNotification(
-							'🤖 GitHub Copilot is watching... and judging.',
-							'info',
-						)
-					">
-					⚡ Copilot
+					✓✓ Prettier
 				</div>
 			</div>
 		</div>
