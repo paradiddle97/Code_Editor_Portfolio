@@ -25,6 +25,55 @@ const skills = {
 	],
 };
 
+const projects = [
+	{
+		name: "Holdfast and Stipe",
+		href: "https://www.holdfastandstipe.com",
+		lang: "Client",
+		desc: "A Webflow website for a seaweed refinery.",
+		tags: ["Webflow", "Hubspot", "Zapier/Make"],
+	},
+	{
+		name: "Devs.exe",
+		href: "https://paradiddle97.github.io/Devs.exe/",
+		lang: "School",
+		desc: "School project about data fetching techniques. In an old school jacket ;)",
+		tags: ["HTML", "CSS", "JavaScript"],
+	},
+	{
+		name: "Weekly Nerd Blog",
+		href: "https://paradiddle97.github.io/weekly-nerd-blog/",
+		lang: "School",
+		desc: "Blog about all the speakers during Minor Web @HvA",
+		tags: ["HTML", "CSS", "JavaScript"],
+	},
+	{
+		name: "CSS DAYTA",
+		href: "https://paradiddle97.github.io/CSS-Dayta/",
+		lang: "Hackathon",
+		desc: "Award winning hackathon project for CSS Day.",
+		tags: ["HTML", "CSS", "JavaScript"],
+	},
+];
+
+function renderProjects() {
+	const el = document.getElementById("projects-list");
+	if (!el) return;
+	el.innerHTML = projects
+		.map(
+			(p) => `
+		<a href="${p.href}" target="_blank" rel="noopener noreferrer" class="project-card" onclick="showNotification('Redirecting to Website...')">
+			<div class="project-header">
+				<span class="project-name">&gt; ${p.name}</span>
+				<span class="project-lang">${p.lang}</span>
+			</div>
+			<div class="project-desc">${p.desc}</div>
+			<div class="project-tags">${p.tags.map((t) => `<span class="tag-pill">${t}</span>`).join("")}</div>
+		</a>`,
+		)
+		.join("");
+}
+
 function renderSkills(containerId, skillArr) {
 	const el = document.getElementById(containerId);
 
@@ -53,8 +102,8 @@ function renderSkills(containerId, skillArr) {
     <div class="code-line" style="animation-delay:${i * 40}ms">
       <span class="ln">${startNumber + i}</span>
       <div class="gutter"></div>
-      <span class="code-content" style="display:flex;align-items:center;gap:0;">
-        <span style="color:var(--purple-light);margin-right:4px;">  { </span>
+      <span class="code-content ind-1" style="display:flex;align-items:center;gap:0;">
+        <span style="color:var(--purple-light);margin-right:4px;">{ </span>
         <span class="prop">${s.name}</span>
         <span style="margin:0 8px;color:var(--gray1);">│</span>
         <span class="skill-bar-wrap">
@@ -103,11 +152,38 @@ function switchTab(tabEl, section) {
 		t.classList.remove("active");
 		t.setAttribute("aria-selected", "false");
 	});
+	document.getElementById("tab-photo").style.display = "none";
 	tabEl.classList.add("active");
 	tabEl.setAttribute("aria-selected", "true");
+	document.querySelectorAll(".tree-item").forEach((i) => i.classList.remove("active"));
+	const treeMatch = document.querySelector(`.tree-item[onclick*="${section}"]`);
+	if (treeMatch) treeMatch.classList.add("active");
 	showSection(section);
 	updateBreadcrumb(section);
 	updateStatusBar(section);
+}
+
+function openPhoto() {
+	document.querySelectorAll(".tab").forEach((t) => {
+		t.classList.remove("active");
+		t.setAttribute("aria-selected", "false");
+	});
+	const tab = document.getElementById("tab-photo");
+	tab.style.display = "flex";
+	tab.classList.add("active");
+	tab.setAttribute("aria-selected", "true");
+	document.querySelectorAll(".tree-item").forEach((i) => i.classList.remove("active"));
+	document.getElementById("tree-photo").classList.add("active");
+	document.querySelectorAll('[id^="section-"]').forEach((s) => (s.className = "hidden-section"));
+	document.getElementById("section-photo").className = "visible-section";
+	document.getElementById("bc-current").textContent = "niels.jpg";
+	document.getElementById("status-lang").textContent = "JPG";
+}
+
+function closePhoto() {
+	document.getElementById("tab-photo").style.display = "none";
+	document.getElementById("tree-photo").classList.remove("active");
+	switchTabByName("about");
 }
 
 function switchTabByName(section) {
@@ -524,6 +600,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 // Init
+renderProjects();
 renderCmds();
 const initialTab = document.querySelector(".tab.active");
 if (initialTab) updateStatusBar(initialTab.dataset.section);

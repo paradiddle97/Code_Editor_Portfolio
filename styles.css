@@ -925,6 +925,13 @@ body {
 	font-weight: 600;
 	color: var(--purple-light);
 }
+.avatar-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 50%;
+	display: block;
+}
 .profile-info {
 	flex: 1;
 }
@@ -1093,9 +1100,81 @@ body {
 	border-radius: 2px;
 }
 
+/* CODE INDENTATION */
+.code-content.ind-1 { padding-left: calc(16px + 2ch); }
+.code-content.ind-2 { padding-left: calc(16px + 4ch); }
+.code-content.ind-3 { padding-left: calc(16px + 6ch); }
+
 .hidden-section {
 	display: none;
 }
 .visible-section {
 	display: block;
+}
+
+/* IMAGE VIEWER (feature 1: sidebar photo) */
+.img-viewer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 60vh;
+	gap: 14px;
+	padding: 32px;
+}
+.img-viewer-bg {
+	background-image:
+		linear-gradient(45deg, var(--bg3) 25%, transparent 25%),
+		linear-gradient(-45deg, var(--bg3) 25%, transparent 25%),
+		linear-gradient(45deg, transparent 75%, var(--bg3) 75%),
+		linear-gradient(-45deg, transparent 75%, var(--bg3) 75%);
+	background-size: 16px 16px;
+	background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+	background-color: var(--bg1);
+	padding: 20px;
+	border-radius: 4px;
+}
+.img-viewer-img {
+	display: block;
+	max-height: 380px;
+	max-width: 380px;
+	border-radius: 3px;
+}
+.img-viewer-info {
+	color: var(--gray3);
+	font-size: 11px;
+}
+.fd-img {
+	background: #d97706;
+}
+
+
+/* GIT BLAME ANNOTATION (feature 3: GitLens-style) */
+.git-blame {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	margin-left: 20px;
+	opacity: 0;
+	transition: opacity 0.15s;
+	pointer-events: none;
+	vertical-align: middle;
+}
+.code-line:hover .git-blame {
+	opacity: 1;
+}
+.git-blame-avatar {
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	object-fit: cover;
+	flex-shrink: 0;
+	background: linear-gradient(135deg, var(--purple-dim), var(--bg4));
+	border: 1px solid var(--purple);
+}
+.git-blame-text {
+	color: var(--gray2);
+	font-size: 11px;
+	font-style: italic;
+	white-space: nowrap;
 }

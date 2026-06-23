@@ -108,6 +108,18 @@
 				<span>contact.md</span>
 				<span class="tab-close" aria-hidden="true">×</span>
 			</div>
+			<div
+				class="tab"
+				id="tab-photo"
+				role="tab"
+				tabindex="0"
+				aria-selected="false"
+				style="display:none"
+				onclick="openPhoto()">
+				<span style="color: #d97706; font-size: 10px" aria-hidden="true">▣</span>
+				<span>niels.jpg</span>
+				<span class="tab-close" aria-hidden="true" onclick="event.stopPropagation(); closePhoto()">×</span>
+			</div>
 		</div>
 
 		<!-- TOOLBAR -->
@@ -280,51 +292,60 @@
 					PORTFOLIO — NIELS ALING
 				</div>
 				<div class="file-tree">
-					<div class="tree-folder open" role="button" tabindex="0" onclick="toggleFolder(this)">
+					<div
+						class="tree-item active"
+						role="button"
+						tabindex="0"
+						onclick="switchTabByName('about')">
+						<div class="file-dot fd-html" aria-hidden="true"></div>
+						about.html
+					</div>
+					<div
+						class="tree-item"
+						role="button"
+						tabindex="0"
+						onclick="switchTabByName('skills')">
+						<div class="file-dot fd-js" aria-hidden="true"></div>
+						skills.js
+					</div>
+					<div
+						class="tree-item"
+						role="button"
+						tabindex="0"
+						onclick="switchTabByName('projects')">
+						<div class="file-dot fd-json" aria-hidden="true"></div>
+						projects.json
+					</div>
+					<div
+						class="tree-item"
+						role="button"
+						tabindex="0"
+						onclick="switchTabByName('experience')">
+						<div class="file-dot fd-css" aria-hidden="true"></div>
+						experience.css
+					</div>
+					<div
+						class="tree-item"
+						role="button"
+						tabindex="0"
+						onclick="switchTabByName('contact')">
+						<div class="file-dot fd-md" aria-hidden="true"></div>
+						contact.md
+					</div>
+					<div class="tree-folder open" role="button" tabindex="0" onclick="toggleFolder(this)" style="margin-top:6px">
 						<span class="folder-arrow">▶</span>
 						<span style="color: #d4a827; font-size: 13px">📁</span>
-						src
+						images
 					</div>
 					<div class="folder-children">
 						<div
-							class="tree-item active"
-							role="button"
-							tabindex="0"
-							onclick="switchTabByName('about')">
-							<div class="file-dot fd-html" aria-hidden="true"></div>
-							about.html
-						</div>
-						<div
 							class="tree-item"
+							id="tree-photo"
 							role="button"
 							tabindex="0"
-							onclick="switchTabByName('skills')">
-							<div class="file-dot fd-js" aria-hidden="true"></div>
-							skills.js
-						</div>
-						<div
-							class="tree-item"
-							role="button"
-							tabindex="0"
-							onclick="switchTabByName('projects')">
-							<div class="file-dot fd-json" aria-hidden="true"></div>
-							projects.json
-						</div>
-						<div
-							class="tree-item"
-							role="button"
-							tabindex="0"
-							onclick="switchTabByName('experience')">
-							<div class="file-dot fd-css" aria-hidden="true"></div>
-							experience.css
-						</div>
-						<div
-							class="tree-item"
-							role="button"
-							tabindex="0"
-							onclick="switchTabByName('contact')">
-							<div class="file-dot fd-md" aria-hidden="true"></div>
-							contact.md
+							onclick="openPhoto()">
+							<div class="file-dot fd-img" aria-hidden="true"></div>
+							niels.jpg
 						</div>
 					</div>
 				</div>
@@ -385,6 +406,35 @@
 							<div class="gutter"></div>
 							<span class="code-content"></span>
 						</div>
+						<!-- Profile card -->
+						<div style="margin: 8px 0 12px">
+							<div class="profile-block">
+								<div class="avatar">
+									<img src="./images/niels.jpg" alt="Niels Aling" class="avatar-img" onerror="this.style.display='none';this.parentElement.textContent='NA'" />
+								</div>
+								<div class="profile-info">
+									<div class="profile-name">Niels Aling</div>
+									<div class="profile-role">
+										// Digital Developer
+									</div>
+									<div class="profile-bio">
+										With great power comes great
+										responsibility ~ Uncle Ben
+									</div>
+									<div class="profile-badges">
+										<span class="badge badge-green"
+											>Open to work</span
+										>
+										<span class="badge badge-gray"
+											>Utrecht, NL</span
+										>
+										<span class="badge badge-gray"
+											>UTC+1</span
+										>
+									</div>
+								</div>
+							</div>
+						</div>
 						<div class="code-line">
 							<span class="ln">6</span>
 							<div class="gutter"></div>
@@ -416,8 +466,8 @@
 						<div class="code-line">
 							<span class="ln">9</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  &lt;</span
+							<span class="code-content ind-1"
+								><span class="punc">&lt;</span
 								><span class="tag">div</span>
 								<span class="attr">class</span
 								><span class="punc">=</span
@@ -426,39 +476,13 @@
 							>
 						</div>
 
-						<!-- Profile card -->
-						<div style="margin: 8px 0 12px">
-							<div class="profile-block">
-								<div class="avatar">NA</div>
-								<div class="profile-info">
-									<div class="profile-name">Niels Aling</div>
-									<div class="profile-role">
-										// Digital Developer
-									</div>
-									<div class="profile-bio">
-										With great power comes great
-										responsibility ~ Uncle Ben
-									</div>
-									<div class="profile-badges">
-										<span class="badge badge-green"
-											>Open to work</span
-										>
-										<span class="badge badge-gray"
-											>Utrecht, NL</span
-										>
-										<span class="badge badge-gray"
-											>UTC+1</span
-										>
-									</div>
-								</div>
-							</div>
-						</div>
+						
 
 						<div class="code-line">
 							<span class="ln">10</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">    &lt;</span
+							<span class="code-content ind-2"
+								><span class="punc">&lt;</span
 								><span class="tag">span</span>
 								<span class="attr">class</span
 								><span class="punc">=</span
@@ -468,13 +492,13 @@
 								><span class="punc">&lt;/</span
 								><span class="tag">span</span
 								><span class="punc">&gt;</span></span
-							>
+							><span class="git-blame"><img src="./images/niels.jpg" alt="" class="git-blame-avatar" aria-hidden="true" /><span class="git-blame-text">Niels Aling · just now</span></span>
 						</div>
 						<div class="code-line">
 							<span class="ln">11</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">    &lt;</span
+							<span class="code-content ind-2"
+								><span class="punc">&lt;</span
 								><span class="tag">span</span>
 								<span class="attr">class</span
 								><span class="punc">=</span
@@ -493,8 +517,8 @@
 						<div class="code-line">
 							<span class="ln">12</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">    &lt;</span
+							<span class="code-content ind-2"
+								><span class="punc">&lt;</span
 								><span class="tag">span</span>
 								<span class="attr">class</span
 								><span class="punc">=</span
@@ -509,8 +533,8 @@
 						<div class="code-line">
 							<span class="ln">13</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">    &lt;</span
+							<span class="code-content ind-2"
+								><span class="punc">&lt;</span
 								><span class="tag">span</span>
 								<span class="attr">class</span
 								><span class="punc">=</span
@@ -525,46 +549,134 @@
 						<div class="code-line">
 							<span class="ln">14</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">    &lt;</span
+							<span class="code-content ind-2"
+								><span class="punc">&lt;</span
 								><span class="tag">ul</span>
 								<span class="attr">class</span
 								><span class="punc">=</span
 								><span class="val">"superpowers"</span
-								><span class="punc">&gt;</span
-								><span class="str">adaptive, creative, open-minded</span
-								><span class="punc">&lt;/</span
-								><span class="tag">ul</span
 								><span class="punc">&gt;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">15</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">    &lt;</span
-								><span class="tag">ul</span>
-								<span class="attr">class</span
-								><span class="punc">=</span
-								><span class="val">"hobbies"</span
+							<span class="code-content ind-3"
+								><span class="punc">&lt;</span
+								><span class="tag">li</span
 								><span class="punc">&gt;</span
-								><span class="str">gaming, music, fixing shit</span
+								><span class="str">adaptive</span
 								><span class="punc">&lt;/</span
-								><span class="tag">ul</span
+								><span class="tag">li</span
 								><span class="punc">&gt;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">16</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  &lt;/</span
-								><span class="tag">div</span
+							<span class="code-content ind-3"
+								><span class="punc">&lt;</span
+								><span class="tag">li</span
+								><span class="punc">&gt;</span
+								><span class="str">creative</span
+								><span class="punc">&lt;/</span
+								><span class="tag">li</span
 								><span class="punc">&gt;</span></span
 							>
 						</div>
 						<div class="code-line">
 							<span class="ln">17</span>
+							<div class="gutter"></div>
+							<span class="code-content ind-3"
+								><span class="punc">&lt;</span
+								><span class="tag">li</span
+								><span class="punc">&gt;</span
+								><span class="str">open-minded</span
+								><span class="punc">&lt;/</span
+								><span class="tag">li</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">18</span>
+							<div class="gutter"></div>
+							<span class="code-content ind-2"
+								><span class="punc">&lt;/</span
+								><span class="tag">ul</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">19</span>
+							<div class="gutter"></div>
+							<span class="code-content ind-2"
+								><span class="punc">&lt;</span
+								><span class="tag">ul</span>
+								<span class="attr">class</span
+								><span class="punc">=</span
+								><span class="val">"hobbies"</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">20</span>
+							<div class="gutter"></div>
+							<span class="code-content ind-3"
+								><span class="punc">&lt;</span
+								><span class="tag">li</span
+								><span class="punc">&gt;</span
+								><span class="str">gaming</span
+								><span class="punc">&lt;/</span
+								><span class="tag">li</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">21</span>
+							<div class="gutter"></div>
+							<span class="code-content ind-3"
+								><span class="punc">&lt;</span
+								><span class="tag">li</span
+								><span class="punc">&gt;</span
+								><span class="str">music</span
+								><span class="punc">&lt;/</span
+								><span class="tag">li</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">22</span>
+							<div class="gutter"></div>
+							<span class="code-content ind-3"
+								><span class="punc">&lt;</span
+								><span class="tag">li</span
+								><span class="punc">&gt;</span
+								><span class="str">fixing shit</span
+								><span class="punc">&lt;/</span
+								><span class="tag">li</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">23</span>
+							<div class="gutter"></div>
+							<span class="code-content ind-2"
+								><span class="punc">&lt;/</span
+								><span class="tag">ul</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">24</span>
+							<div class="gutter"></div>
+							<span class="code-content ind-1"
+								><span class="punc">&lt;/</span
+								><span class="tag">div</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">25</span>
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="punc">&lt;/</span
@@ -573,7 +685,7 @@
 							>
 						</div>
 						<div class="code-line">
-							<span class="ln">18</span>
+							<span class="ln">26</span>
 							<div class="gutter"></div>
 							<span class="code-content"
 								><span class="punc">&lt;/</span
@@ -878,108 +990,20 @@
 						<div class="code-line">
 							<span class="ln">7</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="prop">"projects"</span
+							<span class="code-content ind-1"
+								><span class="prop">"projects"</span
 								><span class="punc">: [</span></span
 							>
 						</div>
 
-						<!-- Project cards -->
-						<a
-							href="https://www.holdfastandstipe.com"
-							target="_blank"
-							class="project-card"
-							onclick="
-								showNotification('Redirecting to Website...')
-							">
-							<div class="project-header">
-								<span class="project-name">
-									> Holdfast and Stipe</span
-								>
-								<span class="project-lang">Webflow</span>
-							</div>
-							<div class="project-desc">
-								A Webflow website for a seaweed refinary.
-							</div>
-							<div class="project-tags">
-								<span class="tag-pill">Webflow</span>
-								<span class="tag-pill">Hubspot</span>
-								<span class="tag-pill">Zapier/Make</span>
-							</div>
-						</a>
-
-						<a
-							href="https://paradiddle97.github.io/Devs.exe/"
-							target="_blank"
-							class="project-card"
-							onclick="
-								showNotification('Redirecting to Website...')
-							">
-							<div class="project-header">
-								<span class="project-name"> > Devs.exe</span>
-								<span class="project-lang">School</span>
-							</div>
-							<div class="project-desc">
-								School project about data fetching techniques.
-								In an old school jacket ;)
-							</div>
-							<div class="project-tags">
-								<span class="tag-pill">HTML</span>
-								<span class="tag-pill">CSS</span>
-								<span class="tag-pill">JavaScript</span>
-							</div>
-						</a>
-
-						<a
-							href="https://paradiddle97.github.io/weekly-nerd-blog/"
-							target="_blank"
-							class="project-card"
-							onclick="
-								showNotification('Redirecting to Website...')
-							">
-							<div class="project-header">
-								<span class="project-name">
-									> Weekly Nerd Blog</span
-								>
-								<span class="project-lang">School</span>
-							</div>
-							<div class="project-desc">
-								Blog about all the speakers during Minor Web
-								@HvA
-							</div>
-							<div class="project-tags">
-								<span class="tag-pill">HTML</span>
-								<span class="tag-pill">CSS</span>
-								<span class="tag-pill">JavaScript</span>
-							</div>
-						</a>
-
-						<a
-							href="https://paradiddle97.github.io/CSS-Dayta/"
-							target="_blank"
-							class="project-card"
-							onclick="
-								showNotification('Redirecting to Website...')
-							">
-							<div class="project-header">
-								<span class="project-name"> > CSS DAYTA</span>
-								<span class="project-lang">Hackaton</span>
-							</div>
-							<div class="project-desc">
-								Award winning hackaton project for CSS Day.
-							</div>
-							<div class="project-tags">
-								<span class="tag-pill">HTML</span>
-								<span class="tag-pill">CSS</span>
-								<span class="tag-pill">JavaScript</span>
-							</div>
-						</a>
+						<!-- Project cards — rendered by JS -->
+						<div id="projects-list"></div>
 
 						<div class="code-line" style="margin-top: 12px">
 							<span class="ln">8</span>
 							<div class="gutter"></div>
-							<span class="code-content">
-								<span class="punc">]</span></span
+							<span class="code-content ind-1"
+								><span class="punc">]</span></span
 							>
 						</div>
 						<div class="code-line">
@@ -1100,8 +1124,7 @@
 						<div class="code-line">
 							<span class="ln">6</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  </span
+							<span class="code-content ind-1"
 								><span class="cls">& .holdfast-and-stipe</span>
 								<span class="punc">{</span></span
 							>
@@ -1109,8 +1132,8 @@
 						<div class="code-line">
 							<span class="ln">7</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --company</span
+							<span class="code-content ind-2"
+								><span class="prop">--company</span
 								><span class="punc">: </span
 								><span class="str">"Holdfast and Stipe"</span
 								><span class="punc">;</span></span
@@ -1119,8 +1142,8 @@
 						<div class="code-line">
 							<span class="ln">8</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --role</span
+							<span class="code-content ind-2"
+								><span class="prop">--role</span
 								><span class="punc">: </span
 								><span class="str">"Digital Developer"</span
 								><span class="punc">;</span></span
@@ -1129,8 +1152,8 @@
 						<div class="code-line">
 							<span class="ln">9</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --period</span
+							<span class="code-content ind-2"
+								><span class="prop">--period</span
 								><span class="punc">: </span
 								><span class="str">"2025 → Now"</span
 								><span class="punc">;</span></span
@@ -1139,8 +1162,8 @@
 						<div class="code-line">
 							<span class="ln">10</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --stack</span
+							<span class="code-content ind-2"
+								><span class="prop">--stack</span
 								><span class="punc">: </span
 								><span class="val">webflow, zapier, javascript, css</span
 								><span class="punc">;</span></span
@@ -1149,8 +1172,8 @@
 						<div class="code-line">
 							<span class="ln">11</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  }</span></span
+							<span class="code-content ind-1"
+								><span class="punc">}</span></span
 							>
 						</div>
 
@@ -1214,8 +1237,7 @@
 						<div class="code-line">
 							<span class="ln">12</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  </span
+							<span class="code-content ind-1"
 								><span class="cls">& .clarity</span>
 								<span class="punc">{</span></span
 							>
@@ -1223,8 +1245,8 @@
 						<div class="code-line">
 							<span class="ln">13</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --company</span
+							<span class="code-content ind-2"
+								><span class="prop">--company</span
 								><span class="punc">: </span
 								><span class="str">"Clarity"</span
 								><span class="punc">;</span></span
@@ -1233,8 +1255,8 @@
 						<div class="code-line">
 							<span class="ln">14</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --role</span
+							<span class="code-content ind-2"
+								><span class="prop">--role</span
 								><span class="punc">: </span
 								><span class="str">"Frontend Developer"</span
 								><span class="punc">;</span></span
@@ -1243,8 +1265,8 @@
 						<div class="code-line">
 							<span class="ln">15</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --period</span
+							<span class="code-content ind-2"
+								><span class="prop">--period</span
 								><span class="punc">: </span
 								><span class="str">"2024 → 2025"</span
 								><span class="punc">;</span></span
@@ -1253,8 +1275,8 @@
 						<div class="code-line">
 							<span class="ln">16</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --stack</span
+							<span class="code-content ind-2"
+								><span class="prop">--stack</span
 								><span class="punc">: </span
 								><span class="val">next-js, vue-js, react</span
 								><span class="punc">;</span></span
@@ -1263,8 +1285,8 @@
 						<div class="code-line">
 							<span class="ln">17</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  }</span></span
+							<span class="code-content ind-1"
+								><span class="punc">}</span></span
 							>
 						</div>
 						<div style="margin: 4px 66px 8px">
@@ -1326,8 +1348,7 @@
 						<div class="code-line">
 							<span class="ln">18</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  </span
+							<span class="code-content ind-1"
 								><span class="cls">& .aardig-amsterdam</span>
 								<span class="punc">{</span></span
 							>
@@ -1335,8 +1356,8 @@
 						<div class="code-line">
 							<span class="ln">19</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --company</span
+							<span class="code-content ind-2"
+								><span class="prop">--company</span
 								><span class="punc">: </span
 								><span class="str">"aardig amsterdam"</span
 								><span class="punc">;</span></span
@@ -1345,8 +1366,8 @@
 						<div class="code-line">
 							<span class="ln">20</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --role</span
+							<span class="code-content ind-2"
+								><span class="prop">--role</span
 								><span class="punc">: </span
 								><span class="str">"Low-code Developer"</span
 								><span class="punc">;</span></span
@@ -1355,8 +1376,8 @@
 						<div class="code-line">
 							<span class="ln">21</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --period</span
+							<span class="code-content ind-2"
+								><span class="prop">--period</span
 								><span class="punc">: </span
 								><span class="str">"2023 → 2024"</span
 								><span class="punc">;</span></span
@@ -1365,8 +1386,8 @@
 						<div class="code-line">
 							<span class="ln">22</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --stack</span
+							<span class="code-content ind-2"
+								><span class="prop">--stack</span
 								><span class="punc">: </span
 								><span class="val">webflow, zapier, hubspot</span
 								><span class="punc">;</span></span
@@ -1375,8 +1396,8 @@
 						<div class="code-line">
 							<span class="ln">23</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  }</span></span
+							<span class="code-content ind-1"
+								><span class="punc">}</span></span
 							>
 						</div>
 
@@ -1446,8 +1467,7 @@
 						<div class="code-line">
 							<span class="ln">27</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  </span
+							<span class="code-content ind-1"
 								><span class="cls">& .hva</span>
 								<span class="punc">{</span></span
 							>
@@ -1455,8 +1475,8 @@
 						<div class="code-line">
 							<span class="ln">28</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --degree</span
+							<span class="code-content ind-2"
+								><span class="prop">--degree</span
 								><span class="punc">: </span
 								><span class="str">"Bachelor's degree"</span
 								><span class="punc">;</span></span
@@ -1465,8 +1485,8 @@
 						<div class="code-line">
 							<span class="ln">29</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --field</span
+							<span class="code-content ind-2"
+								><span class="prop">--field</span
 								><span class="punc">: </span
 								><span class="str">"Communication Multimedia Design"</span
 								><span class="punc">;</span></span
@@ -1475,8 +1495,8 @@
 						<div class="code-line">
 							<span class="ln">30</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  }</span></span
+							<span class="code-content ind-1"
+								><span class="punc">}</span></span
 							>
 						</div>
 						<div style="margin: 4px 66px 8px">
@@ -1524,8 +1544,7 @@
 						<div class="code-line">
 							<span class="ln">31</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  </span
+							<span class="code-content ind-1"
 								><span class="cls">& .hku</span>
 								<span class="punc">{</span></span
 							>
@@ -1533,8 +1552,8 @@
 						<div class="code-line">
 							<span class="ln">32</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --degree</span
+							<span class="code-content ind-2"
+								><span class="prop">--degree</span
 								><span class="punc">: </span
 								><span class="str">"Associate's Degree"</span
 								><span class="punc">;</span></span
@@ -1543,8 +1562,8 @@
 						<div class="code-line">
 							<span class="ln">33</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --field</span
+							<span class="code-content ind-2"
+								><span class="prop">--field</span
 								><span class="punc">: </span
 								><span class="str">"Design Digital Media"</span
 								><span class="punc">;</span></span
@@ -1553,8 +1572,8 @@
 						<div class="code-line">
 							<span class="ln">34</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  }</span></span
+							<span class="code-content ind-1"
+								><span class="punc">}</span></span
 							>
 						</div>
 						<div style="margin: 4px 66px 8px">
@@ -1602,8 +1621,7 @@
 						<div class="code-line">
 							<span class="ln">35</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  </span
+							<span class="code-content ind-1"
 								><span class="cls">& .glu</span>
 								<span class="punc">{</span></span
 							>
@@ -1611,8 +1629,8 @@
 						<div class="code-line">
 							<span class="ln">36</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --degree</span
+							<span class="code-content ind-2"
+								><span class="prop">--degree</span
 								><span class="punc">: </span
 								><span class="str">"MBO 4"</span
 								><span class="punc">;</span></span
@@ -1621,8 +1639,8 @@
 						<div class="code-line">
 							<span class="ln">37</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="prop">    --field</span
+							<span class="code-content ind-2"
+								><span class="prop">--field</span
 								><span class="punc">: </span
 								><span class="str">"Animation Audio / Visual Design"</span
 								><span class="punc">;</span></span
@@ -1631,8 +1649,8 @@
 						<div class="code-line">
 							<span class="ln">38</span>
 							<div class="gutter"></div>
-							<span class="code-content"
-								><span class="punc">  }</span></span
+							<span class="code-content ind-1"
+								><span class="punc">}</span></span
 							>
 						</div>
 						<div class="code-line">
@@ -1735,6 +1753,20 @@
 						</div>
 					</div>
 				</div>
+				<!-- ===== PHOTO SECTION (image viewer) ===== -->
+					<div id="section-photo" class="hidden-section">
+						<div class="img-viewer">
+							<div class="img-viewer-bg">
+								<img
+									src="./images/niels.jpg"
+									alt="Niels Aling"
+									class="img-viewer-img"
+								/>
+							</div>
+							<div class="img-viewer-info">niels.jpg &nbsp;·&nbsp; JPG</div>
+						</div>
+					</div>
+
 				<!-- end editor-content -->
 
 				<!-- MINIMAP -->
