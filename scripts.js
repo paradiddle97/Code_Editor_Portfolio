@@ -1,27 +1,27 @@
 const skills = {
 	frontend: [
-		{ name: "HTML", level: 90, color: "#1a7a3d" },
-		{ name: "CSS", level: 85, color: "#1a7a3d" },
-		{ name: "JavaScript", level: 60, color: "#1a7a3d" },
-		{ name: "Webflow", level: 90, color: "#1a7a3d" },
+		{ name: "HTML", level: 90, color: "var(--green)" },
+		{ name: "CSS", level: 85, color: "var(--green)" },
+		{ name: "JavaScript", level: 60, color: "var(--green)" },
+		{ name: "Webflow", level: 90, color: "var(--green)" },
 	],
 	backend: [
-		{ name: "Zapier / Make", level: 90, color: "#1a7a3d" },
-		{ name: "HubSpot", level: 90, color: "#1a7a3d" },
-		{ name: "SQL", level: 75, color: "#1a7a3d" },
-		{ name: "Next.js / React / Vue", level: 60, color: "#1a7a3d" },
+		{ name: "Zapier / Make", level: 90, color: "var(--green)" },
+		{ name: "HubSpot", level: 90, color: "var(--green)" },
+		{ name: "SQL", level: 75, color: "var(--green)" },
+		{ name: "Next.js / React / Vue", level: 60, color: "var(--green)" },
 	],
 	tools: [
-		{ name: "Git / CLI", level: 70, color: "#1a7a3d" },
-		{ name: "Figma", level: 85, color: "#1a7a3d" },
-		{ name: "Adobe CC", level: 80, color: "#1a7a3d" },
-		{ name: "Asana", level: 85, color: "#1a7a3d" },
+		{ name: "Git / CLI", level: 70, color: "var(--green)" },
+		{ name: "Figma", level: 85, color: "var(--green)" },
+		{ name: "Adobe CC", level: 80, color: "var(--green)" },
+		{ name: "Asana", level: 85, color: "var(--green)" },
 	],
 	languages: [
-		{ name: "Dutch", level: 100, color: "#1a7a3d" },
-		{ name: "English", level: 90, color: "#1a7a3d" },
-		{ name: "German", level: 50, color: "#1a7a3d" },
-		{ name: "Signlanguage (Dutch)", level: 60, color: "#1a7a3d" },
+		{ name: "Dutch", level: 100, color: "var(--green)" },
+		{ name: "English", level: 90, color: "var(--green)" },
+		{ name: "German", level: 50, color: "var(--green)" },
+		{ name: "Signlanguage (Dutch)", level: 60, color: "var(--green)" },
 	],
 };
 
@@ -372,7 +372,9 @@ function showNotification(msg, type) {
 
 // Copy to clipboard
 function copyToClipboard(text, msg) {
-	if (navigator.clipboard) navigator.clipboard.writeText(text);
+	if (navigator.clipboard) {
+		navigator.clipboard.writeText(text).catch(() => {});
+	}
 	showNotification(msg || "Copied!", "success");
 }
 
@@ -513,6 +515,9 @@ function handleCmdKey(e) {
 	if (e.key === "Escape") {
 		closeCmdPalette();
 	}
+	if (e.key === "Tab") {
+		e.preventDefault();
+	}
 }
 
 // Keyboard accessibility for role="button" elements
@@ -528,6 +533,11 @@ document.addEventListener("keydown", (e) => {
 	if ((e.metaKey || e.ctrlKey) && e.key === "p") {
 		e.preventDefault();
 		openCmdPalette();
+	}
+	if ((e.metaKey || e.ctrlKey) && e.key >= "1" && e.key <= "5") {
+		e.preventDefault();
+		const sections = ["about", "skills", "projects", "experience", "contact"];
+		switchTabByName(sections[parseInt(e.key) - 1]);
 	}
 	if ((e.metaKey || e.ctrlKey) && e.key === "`") {
 		e.preventDefault();

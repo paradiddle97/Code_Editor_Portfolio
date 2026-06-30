@@ -6,6 +6,8 @@
 		<title>dev.portfolio — Niels Aling</title>
 		<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
 		<link rel="stylesheet" href="./styles.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
 			rel="stylesheet" />
@@ -44,9 +46,7 @@
 				<span class="menu-item" role="button" tabindex="0" onclick="openCmdPalette()">View</span>
 				<span class="menu-item" role="button" tabindex="0" onclick="openCmdPalette()">Go</span>
 				<span class="menu-item" role="button" tabindex="0" onclick="openCmdPalette()">Run</span>
-				<span class="menu-item" onclick="togglePanel()"
-					>Terminal</span
-				>
+				<span class="menu-item" role="button" tabindex="0" onclick="togglePanel()">Terminal</span>
 			</div>
 			<div class="titlebar-center">dev.portfolio — Niels Aling</div>
 		</div>
@@ -376,7 +376,7 @@
 							css-day.jpeg
 						</div>
 						<div
-							class="tree-item tree-item-dotfile"
+							class="tree-item"
 							role="button"
 							tabindex="0"
 							onclick="openImage('./images/hamster.JPG', 'hamster.jpg', 'tree-hamster')"
@@ -447,7 +447,7 @@
 						<div style="margin: 8px 0 12px">
 							<div class="profile-block">
 								<div class="avatar">
-									<img src="./images/niels_03.jpg" alt="Niels Aling" class="avatar-img" onerror="this.style.display='none';this.parentElement.textContent='NA'" />
+									<img src="./images/niels_03.jpg" alt="Niels Aling" class="avatar-img" decoding="async" onerror="this.style.display='none';this.parentElement.textContent='NA'" />
 								</div>
 								<div class="profile-info">
 									<div class="profile-name">Niels Aling</div>
@@ -461,7 +461,7 @@
 											role="button"
 											tabindex="0"
 											onclick="openUncleBen()"
-											title="..."
+											aria-label="Uncle Ben easter egg"
 											style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px;">Uncle Ben</span>
 									</div>
 									<div class="profile-badges">
