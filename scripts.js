@@ -163,7 +163,13 @@ function switchTab(tabEl, section) {
 	updateStatusBar(section);
 }
 
-function openPhoto() {
+function openImage(src, filename, treeId) {
+	document.getElementById("photo-viewer-img").src = src;
+	document.getElementById("photo-viewer-img").alt = filename;
+	const ext = filename.split(".").pop().toUpperCase();
+	document.getElementById("photo-viewer-info").innerHTML = filename + " &nbsp;·&nbsp; " + ext;
+	document.getElementById("tab-photo-name").textContent = filename;
+
 	document.querySelectorAll(".tab").forEach((t) => {
 		t.classList.remove("active");
 		t.setAttribute("aria-selected", "false");
@@ -173,16 +179,48 @@ function openPhoto() {
 	tab.classList.add("active");
 	tab.setAttribute("aria-selected", "true");
 	document.querySelectorAll(".tree-item").forEach((i) => i.classList.remove("active"));
-	document.getElementById("tree-photo").classList.add("active");
+	if (treeId) {
+		const treeEl = document.getElementById(treeId);
+		if (treeEl) treeEl.classList.add("active");
+	}
 	document.querySelectorAll('[id^="section-"]').forEach((s) => (s.className = "hidden-section"));
 	document.getElementById("section-photo").className = "visible-section";
-	document.getElementById("bc-current").textContent = "niels.jpg";
-	document.getElementById("status-lang").textContent = "JPG";
+	document.getElementById("bc-current").textContent = filename;
+	document.getElementById("status-lang").textContent = ext;
+}
+
+function openPhoto() {
+	openImage("./images/niels_01.jpg", "niels_01.jpg", "tree-photo");
+}
+
+const spidermanImages = [
+	["./images/spiderman_cat.JPG", "spdrmn_ct.jpg", "tree-spiderman-cat"],
+];
+function openUncleBen() {
+	const pick = spidermanImages[Math.floor(Math.random() * spidermanImages.length)];
+	openImage(...pick);
+	showNotification("🕷️ With great power...", "success");
+}
+
+let telClickCount = 0;
+let telClickTimer;
+function dialTel() {
+	telClickCount++;
+	clearTimeout(telClickTimer);
+	if (telClickCount >= 3) {
+		telClickCount = 0;
+		openImage("./images/niels_phone.JPG", "niels_phone.jpg", null);
+		showNotification("Fine. What do you want?", "success");
+	} else {
+		showNotification("I could put my number here — but I won't pick up anyway.", "info");
+		telClickTimer = setTimeout(() => { telClickCount = 0; }, 4000);
+	}
 }
 
 function closePhoto() {
 	document.getElementById("tab-photo").style.display = "none";
-	document.getElementById("tree-photo").classList.remove("active");
+	document.getElementById("tab-photo-name").textContent = "niels_01.jpg";
+	document.querySelectorAll(".tree-item").forEach((i) => i.classList.remove("active"));
 	switchTabByName("about");
 }
 

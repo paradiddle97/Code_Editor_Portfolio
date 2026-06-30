@@ -117,7 +117,7 @@
 				style="display:none"
 				onclick="openPhoto()">
 				<span style="color: #d97706; font-size: 10px" aria-hidden="true">▣</span>
-				<span>niels.jpg</span>
+				<span id="tab-photo-name">niels_01.jpg</span>
 				<span class="tab-close" aria-hidden="true" onclick="event.stopPropagation(); closePhoto()">×</span>
 			</div>
 		</div>
@@ -345,7 +345,25 @@
 							tabindex="0"
 							onclick="openPhoto()">
 							<div class="file-dot fd-img" aria-hidden="true"></div>
-							niels.jpg
+							niels_01.jpg
+						</div>
+						<div
+							class="tree-item"
+							id="tree-photo-2"
+							role="button"
+							tabindex="0"
+							onclick="openImage('./images/niels_02.jpeg', 'niels_02.jpeg', 'tree-photo-2')">
+							<div class="file-dot fd-img" aria-hidden="true"></div>
+							niels_02.jpeg
+						</div>
+<div
+							class="tree-item tree-item-dotfile"
+							role="button"
+							tabindex="0"
+							onclick="openImage('./images/hamster.JPG', 'hamster.jpg', 'tree-hamster')"
+							id="tree-hamster">
+							<div class="file-dot fd-img" aria-hidden="true"></div>
+							hmstr.jpg
 						</div>
 					</div>
 				</div>
@@ -410,7 +428,7 @@
 						<div style="margin: 8px 0 12px">
 							<div class="profile-block">
 								<div class="avatar">
-									<img src="./images/niels.jpg" alt="Niels Aling" class="avatar-img" onerror="this.style.display='none';this.parentElement.textContent='NA'" />
+									<img src="./images/niels_01.jpg" alt="Niels Aling" class="avatar-img" onerror="this.style.display='none';this.parentElement.textContent='NA'" />
 								</div>
 								<div class="profile-info">
 									<div class="profile-name">Niels Aling</div>
@@ -419,7 +437,13 @@
 									</div>
 									<div class="profile-bio">
 										With great power comes great
-										responsibility ~ Uncle Ben
+										responsibility ~
+										<span
+											role="button"
+											tabindex="0"
+											onclick="openUncleBen()"
+											title="..."
+											style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px;">Uncle Ben</span>
 									</div>
 									<div class="profile-badges">
 										<span class="badge badge-green"
@@ -492,7 +516,7 @@
 								><span class="punc">&lt;/</span
 								><span class="tag">span</span
 								><span class="punc">&gt;</span></span
-							><span class="git-blame"><img src="./images/niels.jpg" alt="" class="git-blame-avatar" aria-hidden="true" /><span class="git-blame-text">Niels Aling · just now</span></span>
+							><span class="git-blame"><img src="./images/niels_01.jpg" alt="" class="git-blame-avatar" aria-hidden="true" /><span class="git-blame-text">Niels Aling · just now</span></span>
 						</div>
 						<div class="code-line">
 							<span class="ln">11</span>
@@ -1723,10 +1747,26 @@
 									<span class="contact-label">linkedin</span>
 									<a
 										class="contact-val"
-										href="https://linkedin.com/in/nielsaling"
+										href="https://linkedin.com/in/niels-aling"
 										target="_blank"
 										rel="noopener noreferrer"
-										>linkedin.com/in/nielsaling</a
+										>linkedin.com/in/niels-aling</a
+									>
+								</div>
+							</span>
+						</div>
+
+						<div class="code-line">
+							<span class="ln">6</span>
+							<div class="gutter"></div>
+							<span class="code-content">
+								<div class="contact-row">
+									<span class="contact-label">tel</span>
+									<a
+										class="contact-val"
+										href="#"
+										onclick="event.preventDefault(); dialTel()"
+										>##########</a
 									>
 								</div>
 							</span>
@@ -1752,21 +1792,21 @@
 							</button>
 						</div>
 					</div>
-				</div>
 				<!-- ===== PHOTO SECTION (image viewer) ===== -->
 					<div id="section-photo" class="hidden-section">
 						<div class="img-viewer">
 							<div class="img-viewer-bg">
 								<img
-									src="./images/niels.jpg"
-									alt="Niels Aling"
+									id="photo-viewer-img"
+									src=""
+									alt=""
 									class="img-viewer-img"
 								/>
 							</div>
-							<div class="img-viewer-info">niels.jpg &nbsp;·&nbsp; JPG</div>
+							<div class="img-viewer-info" id="photo-viewer-info"></div>
 						</div>
 					</div>
-
+				</div>
 				<!-- end editor-content -->
 
 				<!-- MINIMAP -->
