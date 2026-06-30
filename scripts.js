@@ -190,7 +190,7 @@ function openImage(src, filename, treeId) {
 }
 
 function openPhoto() {
-	openImage("./images/niels_01.jpg", "niels_01.jpg", "tree-photo");
+	openImage("./images/niels_03.jpg", "niels_03.jpg", "tree-photo");
 }
 
 const spidermanImages = [
