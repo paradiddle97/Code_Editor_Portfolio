@@ -70,7 +70,7 @@
 				aria-selected="false"
 				data-section="skills"
 				onclick="switchTab(this, 'skills')">
-				<span style="color: #e6a23c; font-size: 10px" aria-hidden="true">JS</span>
+				<span style="color: rgb(217,119,6); font-size: 10px" aria-hidden="true">JS</span>
 				<span>skills.js</span>
 				<span class="tab-close" aria-hidden="true">×</span>
 			</div>
@@ -91,10 +91,10 @@
 				role="tab"
 				tabindex="0"
 				aria-selected="false"
-				data-section="experience"
-				onclick="switchTab(this, 'experience')">
-				<span style="color: #2965f1; font-size: 10px" aria-hidden="true">CSS</span>
-				<span>experience.css</span>
+				data-section="contact"
+				onclick="switchTab(this, 'contact')">
+				<span style="color: #2dbd62; font-size: 10px" aria-hidden="true">#</span>
+				<span>contact.md</span>
 				<span class="tab-close" aria-hidden="true">×</span>
 			</div>
 			<div
@@ -102,10 +102,10 @@
 				role="tab"
 				tabindex="0"
 				aria-selected="false"
-				data-section="contact"
-				onclick="switchTab(this, 'contact')">
-				<span style="color: #6a9955; font-size: 10px" aria-hidden="true">#</span>
-				<span>contact.md</span>
+				data-section="experience"
+				onclick="switchTab(this, 'experience')">
+				<span style="color: #2965f1; font-size: 10px" aria-hidden="true">CSS</span>
+				<span>experience.css</span>
 				<span class="tab-close" aria-hidden="true">×</span>
 			</div>
 			<div
@@ -116,7 +116,7 @@
 				aria-selected="false"
 				style="display:none"
 				onclick="openPhoto()">
-				<span style="color: #d97706; font-size: 10px" aria-hidden="true">▣</span>
+				<span style="color: var(--purple-light); font-size: 10px" aria-hidden="true">▣</span>
 				<span id="tab-photo-name">niels_01.jpg</span>
 				<span class="tab-close" aria-hidden="true" onclick="event.stopPropagation(); closePhoto()">×</span>
 			</div>
@@ -245,7 +245,7 @@
 					aria-label="Extensions"
 					onclick="
 						showNotification(
-							'📦 31 extensions installed.',
+							'📦 17 extensions installed.',
 							'ext',
 						)
 					">
@@ -320,21 +320,21 @@
 						class="tree-item"
 						role="button"
 						tabindex="0"
-						onclick="switchTabByName('experience')">
-						<div class="file-dot fd-css" aria-hidden="true"></div>
-						experience.css
+						onclick="switchTabByName('contact')">
+						<div class="file-dot fd-md" aria-hidden="true"></div>
+						contact.md
 					</div>
 					<div
 						class="tree-item"
 						role="button"
 						tabindex="0"
-						onclick="switchTabByName('contact')">
-						<div class="file-dot fd-md" aria-hidden="true"></div>
-						contact.md
+						onclick="switchTabByName('experience')">
+						<div class="file-dot fd-css" aria-hidden="true"></div>
+						experience.css
 					</div>
 					<div class="tree-folder open" role="button" tabindex="0" onclick="toggleFolder(this)" style="margin-top:6px">
 						<span class="folder-arrow">▶</span>
-						<span style="color: #d4a827; font-size: 13px">📁</span>
+						<span style="color: var(--purple-light); font-size: 13px">📁</span>
 						images
 					</div>
 					<div class="folder-children">
@@ -473,6 +473,9 @@
 										<span class="badge badge-gray"
 											>UTC+1</span
 										>
+										<span class="badge badge-pride"
+											>they/them</span
+										>
 									</div>
 								</div>
 							</div>
@@ -590,6 +593,22 @@
 						</div>
 						<div class="code-line">
 							<span class="ln">14</span>
+							<div class="gutter"></div>
+							<span class="code-content ind-2"
+								><span class="punc">&lt;</span
+								><span class="tag">span</span>
+								<span class="attr">class</span
+								><span class="punc">=</span
+								><span class="val">"pronouns"</span
+								><span class="punc">&gt;</span
+								><span class="str">they/them</span
+								><span class="punc">&lt;/</span
+								><span class="tag">span</span
+								><span class="punc">&gt;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">15</span>
 							<div class="gutter"></div>
 							<span class="code-content ind-2"
 								><span class="punc">&lt;</span
@@ -1193,6 +1212,16 @@
 						</div>
 						<div class="code-line">
 							<span class="ln">9</span>
+							<div class="gutter"></div>
+							<span class="code-content ind-2"
+								><span class="prop">--pride</span
+								><span class="punc">: </span
+								><span class="kw">true</span
+								><span class="punc">;</span></span
+							>
+						</div>
+						<div class="code-line">
+							<span class="ln">10</span>
 							<div class="gutter"></div>
 							<span class="code-content ind-2"
 								><span class="prop">--period</span

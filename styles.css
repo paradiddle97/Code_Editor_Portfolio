@@ -325,13 +325,13 @@ body {
 	flex-shrink: 0;
 }
 .fd-js {
-	background: #e6a23c;
+	background: rgb(217, 119, 6);
 }
 .fd-json {
 	background: #d4a827;
 }
 .fd-md {
-	background: var(--gray3);
+	background: #2dbd62;
 }
 .fd-html {
 	background: #e44d26;
@@ -924,6 +924,21 @@ body {
 	font-family: var(--sans);
 	font-weight: 600;
 	color: var(--purple-light);
+	transition: border-color 0.4s;
+	position: relative;
+}
+.avatar::after {
+	content: "";
+	position: absolute;
+	inset: -3px;
+	border-radius: 50%;
+	background: conic-gradient(#e40303, #ff8c00, #ffed00, #008026, #24408e, #732982, #e40303);
+	z-index: -1;
+	opacity: 0;
+	transition: opacity 0.4s;
+}
+.avatar:hover::after {
+	opacity: 1;
 }
 .avatar-img {
 	width: 100%;
@@ -940,6 +955,16 @@ body {
 	font-size: 15px;
 	font-family: var(--sans);
 	font-weight: 500;
+	transition: background-size 0.4s;
+	background: linear-gradient(90deg, #e40303, #ff8c00, #ffed00, #008026, #24408e, #732982);
+	background-clip: text;
+	-webkit-background-clip: text;
+	background-size: 0% 100%;
+	background-repeat: no-repeat;
+}
+.profile-name:hover {
+	-webkit-text-fill-color: transparent;
+	background-size: 100% 100%;
 }
 .profile-role {
 	color: var(--purple-light);
@@ -973,6 +998,14 @@ body {
 	background: var(--bg4);
 	color: var(--gray4);
 	border: 1px solid var(--bg5);
+}
+.badge-pride {
+	background: linear-gradient(90deg, #e40303 0%, #ff8c00 20%, #ffed00 40%, #008026 60%, #24408e 80%, #732982 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	border: 1px solid var(--bg5);
+	background-color: var(--bg4);
 }
 
 /* CONTACT */
@@ -1149,7 +1182,7 @@ body {
 	font-size: 11px;
 }
 .fd-img {
-	background: #d97706;
+	background: var(--purple-light);
 }
 .tree-item-dotfile {
 	color: var(--gray2);
