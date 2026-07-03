@@ -663,6 +663,36 @@ document.addEventListener("keydown", (e) => {
 	}
 });
 
+// Lock scroll to one axis at a time on touch devices
+(function () {
+	const el = document.getElementById("editor-content");
+	let startX = 0, startY = 0, dir = null;
+
+	el.addEventListener("touchstart", (e) => {
+		startX = e.touches[0].clientX;
+		startY = e.touches[0].clientY;
+		dir = null;
+	}, { passive: true });
+
+	el.addEventListener("touchmove", (e) => {
+		if (!dir) {
+			const dx = Math.abs(e.touches[0].clientX - startX);
+			const dy = Math.abs(e.touches[0].clientY - startY);
+			if (dx > 4 || dy > 4) {
+				dir = dx > dy ? "x" : "y";
+				el.style.overflowX = dir === "x" ? "auto" : "hidden";
+				el.style.overflowY = dir === "y" ? "auto" : "hidden";
+			}
+		}
+	}, { passive: true });
+
+	el.addEventListener("touchend", () => {
+		dir = null;
+		el.style.overflowX = "auto";
+		el.style.overflowY = "auto";
+	}, { passive: true });
+}());
+
 // Init
 renderProjects();
 renderCmds();
