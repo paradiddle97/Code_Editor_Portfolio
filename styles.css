@@ -1001,12 +1001,11 @@ body {
 	border: 1px solid var(--bg5);
 }
 .badge-pride {
-	background: linear-gradient(90deg, #e40303 0%, #ff8c00 20%, #ffed00 40%, #008026 60%, #24408e 80%, #732982 100%);
-	-webkit-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
-	border: 1px solid var(--bg5);
-	background-color: var(--bg4);
+	color: var(--gray4);
+	border: 1.5px solid transparent;
+	background:
+		linear-gradient(var(--bg4), var(--bg4)) padding-box,
+		linear-gradient(90deg, #e40303, #ff8c00, #ffed00, #008026, #24408e, #732982) border-box;
 }
 
 /* CONTACT */
