@@ -1223,6 +1223,11 @@ body {
 	white-space: nowrap;
 }
 
+/* EXPERIENCE CARDS */
+.exp-card {
+	margin: 4px 66px 8px;
+}
+
 /* ===== RESPONSIVE ===== */
 
 /* Dynamic viewport height for mobile browsers */
@@ -1293,8 +1298,9 @@ body {
 		gap: 10px;
 	}
 
-	/* Project cards: reduce margins */
-	.project-card { margin: 6px 8px; }
+	/* Project en experience cards: reduce margins */
+	.project-card,
+	.exp-card { margin: 10px 8px; }
 
 	/* Horizontal scroll instead of wrapping */
 	.editor-content {
