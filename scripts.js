@@ -161,6 +161,18 @@ function switchTab(tabEl, section) {
 	showSection(section);
 	updateBreadcrumb(section);
 	updateStatusBar(section);
+	scrollTabIntoView(tabEl);
+}
+
+function scrollTabIntoView(tabEl) {
+	const tabbar = document.getElementById("tabbar");
+	const tabRight = tabEl.offsetLeft + tabEl.offsetWidth;
+	const barRight = tabbar.scrollLeft + tabbar.clientWidth;
+	if (tabRight > barRight) {
+		tabbar.scrollLeft = tabRight - tabbar.clientWidth;
+	} else if (tabEl.offsetLeft < tabbar.scrollLeft) {
+		tabbar.scrollLeft = tabEl.offsetLeft;
+	}
 }
 
 function openImage(src, filename, treeId) {

@@ -146,6 +146,7 @@ body {
 		color 0.15s;
 	position: relative;
 	min-width: 120px;
+	flex-shrink: 0;
 }
 .tab:hover {
 	background: var(--bg2);
@@ -173,7 +174,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	opacity: 0;
+	opacity: 0.5;
 	font-size: 11px;
 	transition:
 		opacity 0.15s,
@@ -1257,13 +1258,6 @@ body {
 	.toolbar > :nth-child(2),
 	.toolbar > :nth-child(3),
 	.toolbar > :nth-child(4) { display: none; }
-
-	/* Tabs: compact */
-	.tab {
-		min-width: 70px;
-		padding: 0 10px;
-		font-size: 11px;
-	}
 
 	/* Sidebar: slide-in overlay */
 	.sidebar {
