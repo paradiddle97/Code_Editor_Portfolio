@@ -352,10 +352,14 @@ function formatDocument() {
 }
 
 // Sidebar toggle
-let sidebarOpen = true;
+let sidebarOpen = window.innerWidth > 640;
+if (!sidebarOpen) {
+	document.getElementById("sidebar").classList.add("collapsed");
+}
 function toggleSidebar() {
 	sidebarOpen = !sidebarOpen;
 	document.getElementById("sidebar").classList.toggle("collapsed", !sidebarOpen);
+	document.getElementById("sidebar-overlay").classList.toggle("active", sidebarOpen && window.innerWidth <= 640);
 }
 
 // Notification

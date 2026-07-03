@@ -1222,3 +1222,114 @@ body {
 	font-style: italic;
 	white-space: nowrap;
 }
+
+/* ===== RESPONSIVE ===== */
+
+/* Dynamic viewport height for mobile browsers */
+@supports (height: 100dvh) {
+	body { height: 100dvh; }
+}
+
+/* Sidebar overlay backdrop (mobile only) */
+.sidebar-overlay {
+	display: none;
+}
+
+/* TABLET (≤ 900px) */
+@media (max-width: 900px) {
+	.minimap { display: none; }
+
+	.titlebar-menu { gap: 8px; margin-left: 8px; }
+
+	.cmd-palette { width: 90%; }
+
+	.profile-block { margin: 6px 24px; }
+
+	.project-card { margin: 8px 24px 8px 26px; }
+}
+
+/* MOBILE (≤ 640px) */
+@media (max-width: 640px) {
+	/* Hide titlebar menu to save space */
+	.titlebar-menu { display: none; }
+
+	/* Toolbar: hide Format, Find and separator */
+	.toolbar > :nth-child(2),
+	.toolbar > :nth-child(3),
+	.toolbar > :nth-child(4) { display: none; }
+
+	/* Tabs: compact */
+	.tab {
+		min-width: 70px;
+		padding: 0 10px;
+		font-size: 11px;
+	}
+
+	/* Sidebar: slide-in overlay */
+	.sidebar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		z-index: 200;
+		width: var(--sidebar-w) !important;
+		transform: translateX(-100%);
+		transition:
+			transform 0.25s ease,
+			box-shadow 0.25s ease;
+	}
+	.sidebar:not(.collapsed) {
+		transform: translateX(0);
+		box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+	}
+
+	/* Semi-transparent backdrop behind open sidebar */
+	.sidebar-overlay {
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.5);
+		z-index: 199;
+		display: none;
+	}
+	.sidebar-overlay.active { display: block; }
+
+	/* Profile: stack vertically */
+	.profile-block {
+		flex-direction: column;
+		margin: 6px 8px;
+		gap: 10px;
+	}
+
+	/* Project cards: reduce margins */
+	.project-card { margin: 6px 8px; }
+
+	/* Code content: tighter padding */
+	.code-content { padding: 0 8px; }
+	.code-content.ind-1 { padding-left: calc(8px + 2ch); }
+	.code-content.ind-2 { padding-left: calc(8px + 4ch); }
+	.code-content.ind-3 { padding-left: calc(8px + 6ch); }
+
+	/* Skill bar: narrower to fit */
+	.skill-bar-wrap { width: 70px; }
+	.prop { min-width: 100px; }
+
+	/* Command palette: full-width */
+	.cmd-palette { width: calc(100% - 24px); }
+	.cmd-overlay { padding-top: 48px; }
+
+	/* Panel: shorter on small screens */
+	.panel.open { height: 140px; }
+
+	/* Status bar: let it scroll horizontally */
+	.statusbar {
+		overflow-x: auto;
+		gap: 8px;
+	}
+	.statusbar::-webkit-scrollbar { display: none; }
+
+	/* Contact: wrap on small screens */
+	.contact-row { flex-wrap: wrap; gap: 6px; }
+
+	/* Git blame: hide on mobile to save space */
+	.git-blame { display: none; }
+}
