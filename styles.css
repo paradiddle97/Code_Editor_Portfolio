@@ -1303,11 +1303,21 @@ body {
 	/* Project cards: reduce margins */
 	.project-card { margin: 6px 8px; }
 
-	/* Code content: tighter padding */
-	.code-content { padding: 0 8px; }
+	/* Horizontal scroll instead of wrapping */
+	.editor-content {
+		overflow-x: auto;
+	}
+	.code-content {
+		white-space: nowrap;
+		word-break: normal;
+		padding: 0 8px;
+	}
 	.code-content.ind-1 { padding-left: calc(8px + 2ch); }
 	.code-content.ind-2 { padding-left: calc(8px + 4ch); }
 	.code-content.ind-3 { padding-left: calc(8px + 6ch); }
+
+	/* Line numbers: niet sticky bij horizontaal scrollen */
+	.ln { position: relative; }
 
 	/* Skill bar: narrower to fit */
 	.skill-bar-wrap { width: 70px; }
