@@ -28,7 +28,7 @@ const skills = {
 const projects = [
 	{
 		name: "Holdfast and Stipe",
-		href: "https://www.holdfastandstipe.com",
+		href: "https://hs-web-copy.webflow.io/",
 		lang: "Client",
 		desc: "A Webflow website for a seaweed refinery.",
 		tags: ["Webflow", "Hubspot", "Zapier/Make"],
